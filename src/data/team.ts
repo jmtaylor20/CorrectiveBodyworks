@@ -18,8 +18,7 @@ export const team: TeamMember[] = [
     name: 'Jeff Cotten',
     credentials: 'PTA, ATC, LMT, CIDN',
     role: 'Owner & Clinician',
-    // TODO: add Jeff's headshot to /public/team/jeff-cotten.jpg
-    photo: null,
+    photo: '/team/jeff-cotten.jpg',
     lede:
       'Nearly 30 years of hands-on experience, focused on finding and correcting the imbalance behind the pain — not just treating the symptom.',
     bio: [
