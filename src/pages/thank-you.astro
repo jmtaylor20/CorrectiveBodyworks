@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+
+<Base title="Thank You" description="Your message has been received.">
+  <section class="section ty">
+    <div class="wrap wrap-narrow">
+      <p class="eyebrow">Message received</p>
+      <h1>Thank you</h1>
+      <p class="lede">
+        We have your message and will get back to you shortly. If you need to reach us
+        sooner, give the clinic a call at <a href={site.phoneHref}>{site.phone}</a>.
+      </p>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="/">Back to home</a>
+        <a class="btn btn--ghost" href="/services/">Explore services</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .ty {
+    text-align: center;
+    padding-block: clamp(5rem, 12vw, 9rem);
+  }
+  .ty .eyebrow {
+    justify-content: center;
+  }
+  .ty .lede {
+    margin: 1.25rem auto 2.25rem;
+    max-width: 52ch;
+  }
+  .ty .btn-row {
+    justify-content: center;
+  }
+</style>

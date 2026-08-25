@@ -1,0 +1,218 @@
+---
+import type { TeamMember } from '../data/team';
+import Icon from './Icon.astro';
+
+interface Props {
+  member: TeamMember;
+  /** Alternate the photo/text sides down the page. */
+  flip?: boolean;
+}
+const { member, flip = false } = Astro.props;
+const initials = member.name
+  .split(' ')
+  .map((n) => n[0])
+  .join('');
+---
+
+<article class:list={['bio reveal', flip && 'bio--flip']} id={member.slug}>
+  <div class="bio__media">
+    {
+      member.photo ? (
+        <img src={member.photo} alt={`${member.name}, ${member.credentials}`} loading="lazy" width="900" height="1200" />
+      ) : (
+        <div class="bio__placeholder" role="img" aria-label={`Photo of ${member.name} coming soon`}>
+          <span>{initials}</span>
+        </div>
+      )
+    }
+  </div>
+
+  <div class="bio__body">
+    <p class="eyebrow">{member.role}</p>
+    <h2>{member.name}</h2>
+    <p class="bio__creds">{member.credentials}</p>
+    <p class="lede bio__lede">{member.lede}</p>
+
+    <div class="stack bio__prose">
+      {member.bio.map((para) => <p>{para}</p>)}
+    </div>
+
+    <div class="bio__meta">
+      {
+        member.education && (
+          <div class="bio__block">
+            <h3>Education</h3>
+            <ul>
+              {member.education.map((e) => (
+                <li>
+                  <Icon name="check" size={17} />
+                  <span>{e}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+
+      <div class="bio__block">
+        <h3>Credentials & Certifications</h3>
+        <ul>
+          {
+            member.certifications.map((c) => (
+              <li>
+                <Icon name="check" size={17} />
+                <span>{c}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="bio__block">
+        <h3>Clinical Focus</h3>
+        <ul>
+          {
+            member.focus.map((f) => (
+              <li>
+                <Icon name="check" size={17} />
+                <span>{f}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <p class="bio__personal">{member.personal}</p>
+  </div>
+</article>
+
+<style>
+  .bio {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .bio + .bio {
+    margin-top: clamp(4rem, 8vw, 7rem);
+    padding-top: clamp(4rem, 8vw, 7rem);
+    border-top: 1px solid var(--border);
+  }
+
+  .bio--flip .bio__media {
+    order: 2;
+  }
+
+  .bio__media {
+    position: sticky;
+    top: 120px;
+  }
+
+  .bio__media img,
+  .bio__placeholder {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+
+  .bio__media img {
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .bio__placeholder {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 3 / 4;
+    background: linear-gradient(150deg, var(--navy-900), var(--slate-600));
+    color: rgba(255, 255, 255, 0.9);
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 4.5rem);
+    letter-spacing: 0.08em;
+  }
+
+  .bio__body h2 {
+    margin-bottom: 0.35rem;
+  }
+
+  .bio__creds {
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    color: var(--slate-600);
+    margin-bottom: 1.25rem;
+  }
+
+  .bio__lede {
+    padding-left: 1.25rem;
+    border-left: 3px solid var(--slate-600);
+    margin-bottom: 1.75rem;
+  }
+
+  .bio__prose p {
+    color: var(--text-muted);
+  }
+
+  .bio__meta {
+    display: grid;
+    gap: 1.75rem;
+    margin-top: 2.25rem;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    background: var(--bg-alt);
+    border-radius: var(--radius-lg);
+  }
+
+  .bio__block h3 {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--slate-600);
+    margin-bottom: 0.85rem;
+  }
+
+  .bio__block ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .bio__block li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.975rem;
+    line-height: 1.45;
+  }
+
+  .bio__block :global(svg) {
+    flex: none;
+    margin-top: 0.2rem;
+    color: var(--slate-600);
+  }
+
+  .bio__personal {
+    margin-top: 1.75rem;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 880px) {
+    .bio {
+      grid-template-columns: 1fr;
+    }
+    .bio--flip .bio__media {
+      order: 0;
+    }
+    .bio__media {
+      position: static;
+      max-width: 360px;
+    }
+  }
+</style>

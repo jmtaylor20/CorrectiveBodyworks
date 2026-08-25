@@ -1,0 +1,213 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CTABanner from '../components/CTABanner.astro';
+import Icon from '../components/Icon.astro';
+import { services } from '../data/services';
+
+const steps = [
+  {
+    title: 'Evaluation',
+    body: 'A thorough assessment of your history, your symptoms, and — critically — how you actually move. We look upstream and downstream from where it hurts.',
+  },
+  {
+    title: 'Hands-on treatment',
+    body: 'Manual therapy, dry needling, and soft tissue work aimed at the restrictions and trigger points driving your symptoms. This is where relief starts.',
+  },
+  {
+    title: 'Corrective programming',
+    body: 'A targeted exercise plan that rebalances what the evaluation uncovered, so the improvement holds once treatment ends.',
+  },
+  {
+    title: 'Return to life',
+    body: 'A graded return to your sport, your job, or simply your day — with the knowledge and the plan to keep the problem from recurring.',
+  },
+];
+---
+
+<Base
+  title="Services"
+  description="Orthopedic physical therapy, manual therapy, integrative dry needling, sports medicine, corrective exercise, orthotics, and clinical massage in Notasulga, Alabama."
+>
+  <PageHero
+    eyebrow="What we do"
+    title="Services"
+    lede="Rehabilitation and wellness care built around one idea: relieve the pain, then correct what caused it."
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="grid svc-grid">
+        {services.map((service) => <ServiceCard service={service} detailed />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="wrap">
+      <div class="proc-head reveal">
+        <p class="eyebrow">How care works</p>
+        <h2>What to expect</h2>
+      </div>
+
+      <ol class="proc">
+        {
+          steps.map((step, i) => (
+            <li class="proc__step reveal">
+              <span class="proc__num">{String(i + 1).padStart(2, '0')}</span>
+              <div>
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap wrap-narrow faq">
+      <div class="reveal">
+        <p class="eyebrow">Common questions</p>
+        <h2>Before your first visit</h2>
+      </div>
+
+      <div class="faq__list">
+        <details class="reveal" open>
+          <summary>Do I need a referral from my doctor?</summary>
+          <p>
+            Alabama allows direct access to physical therapy, so in many cases you can be
+            evaluated without a physician referral. Some insurance plans still require one
+            for coverage. Call us and we will help you sort out what your specific plan
+            needs.
+          </p>
+        </details>
+        <details class="reveal">
+          <summary>What should I bring and wear?</summary>
+          <p>
+            Bring your photo ID, insurance card, and any imaging or physician notes related
+            to your condition. Wear comfortable clothing that lets us access and observe the
+            area we are treating — athletic shorts and a t-shirt work well for most visits.
+          </p>
+        </details>
+        <details class="reveal">
+          <summary>How long is an appointment?</summary>
+          <p>
+            Your initial evaluation typically runs about an hour so we have time to assess
+            thoroughly and start treatment. Follow-up visits are usually 45 to 60 minutes,
+            depending on your plan of care.
+          </p>
+        </details>
+        <details class="reveal">
+          <summary>Does dry needling hurt?</summary>
+          <p>
+            Most patients describe a brief cramp or twitch rather than sharp pain. The
+            needles are very fine — much thinner than those used for injections. Some muscle
+            soreness for a day afterward is normal and usually a good sign.
+          </p>
+        </details>
+        <details class="reveal">
+          <summary>Do you take my insurance?</summary>
+          <p>
+            We work with a range of plans. Because coverage varies so much between policies,
+            the fastest answer is a quick phone call — we will verify your benefits and be
+            straight with you about what to expect out of pocket.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <CTABanner />
+</Base>
+
+<style>
+  .svc-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+
+  .proc-head {
+    margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+    max-width: 60ch;
+  }
+
+  .proc {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: clamp(1.75rem, 3vw, 2.5rem);
+    counter-reset: step;
+  }
+
+  .proc__step {
+    display: grid;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 3px solid var(--slate-600);
+  }
+
+  .proc__num {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: var(--slate-600);
+  }
+
+  .proc__step h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .proc__step p {
+    color: var(--text-muted);
+    font-size: 1rem;
+  }
+
+  .faq__list {
+    margin-top: clamp(2rem, 4vw, 2.75rem);
+    border-top: 1px solid var(--border);
+  }
+
+  .faq__list details {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .faq__list summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.35rem 0;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--navy-900);
+    list-style: none;
+  }
+
+  .faq__list summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq__list summary::after {
+    content: '+';
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--slate-600);
+    flex: none;
+    transition: transform 0.25s var(--ease);
+  }
+
+  .faq__list details[open] summary::after {
+    transform: rotate(45deg);
+  }
+
+  .faq__list p {
+    padding-bottom: 1.5rem;
+    color: var(--text-muted);
+    max-width: 68ch;
+  }
+</style>

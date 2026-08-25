@@ -1,0 +1,45 @@
+---
+interface Props {
+  name: string;
+  size?: number;
+}
+const { name, size = 26 } = Astro.props;
+
+// Single-path line icons, stroked with currentColor so they inherit context.
+const paths: Record<string, string> = {
+  activity: 'M3 12h4l3 8 4-16 3 8h4',
+  hands:
+    'M8 13V5a1.5 1.5 0 0 1 3 0v6m0-1V4a1.5 1.5 0 0 1 3 0v6m0-1V6a1.5 1.5 0 0 1 3 0v8a7 7 0 0 1-7 7h-1a7 7 0 0 1-7-7v-2a1.5 1.5 0 0 1 3 0v2',
+  needle: 'M18 3 21 6M19.5 4.5 9 15l-3 3-3 3 1.5-4.5L6 12 16.5 1.5M8 16l2 2',
+  trophy:
+    'M7 4h10v5a5 5 0 0 1-10 0zM7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3M12 14v4M9 21h6l-.5-3h-5z',
+  balance: 'M12 3v18M5 8h14M8 8 5 15h6zM16 8l-3 7h6zM8 21h8',
+  shoe: 'M2 17v-6h5l3 2h4l4 2h4v4a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1zM7 11V8m3 5V9',
+  briefcase:
+    'M3 8h18v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18',
+  wave: 'M2 8c2.5-3 5-3 7.5 0S15 11 17.5 8 22 5 22 5M2 15c2.5-3 5-3 7.5 0s5.5 3 8-.5',
+  pin: 'M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11z M12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z',
+  phone:
+    'M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z',
+  clock: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM12 7v5l3 2',
+  check: 'M5 12.5 10 17.5 19.5 7',
+  arrow: 'M5 12h14M13 6l6 6-6 6',
+};
+
+const d = paths[name] ?? paths.check;
+---
+
+<svg
+  viewBox="0 0 24 24"
+  width={size}
+  height={size}
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+>
+  <path d={d}></path>
+</svg>

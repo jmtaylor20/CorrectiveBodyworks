@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import TeamCard from '../components/TeamCard.astro';
+import CTABanner from '../components/CTABanner.astro';
+import { team } from '../data/team';
+---
+
+<Base
+  title="Our Team"
+  description="Meet the clinicians of Corrective Bodyworks — Jeff Cotten, PTA, ATC, LMT, CIDN and Cameron Elliott, PT, with more than 50 years of combined experience in Notasulga, Alabama."
+>
+  <PageHero
+    eyebrow="Our team"
+    title="The people treating you"
+    lede="More than 50 years of combined clinical experience — and a shared conviction that good care means treating the whole person, not just the painful part."
+  />
+
+  <section class="section">
+    <div class="wrap">
+      {team.map((member, i) => <TeamCard member={member} flip={i % 2 === 1} />)}
+    </div>
+  </section>
+
+  <CTABanner
+    heading="Work with a clinician who knows your history"
+    body="You will see the same licensed provider from your first evaluation through your last visit."
+  />
+</Base>

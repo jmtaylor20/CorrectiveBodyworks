@@ -1,0 +1,46 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  lede?: string;
+}
+const { eyebrow, title, lede } = Astro.props;
+---
+
+<section class="phero">
+  <div class="wrap">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1>{title}</h1>
+    {lede && <p class="lede phero__lede">{lede}</p>}
+  </div>
+</section>
+
+<style>
+  .phero {
+    position: relative;
+    padding-block: clamp(3.5rem, 8vw, 6rem) clamp(2.5rem, 5vw, 4rem);
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+
+  .phero::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -6%;
+    width: 38%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(76, 100, 122, 0.12), transparent 65%);
+  }
+
+  .phero > .wrap {
+    position: relative;
+  }
+
+  .phero__lede {
+    margin-top: 1.25rem;
+    max-width: 62ch;
+  }
+</style>

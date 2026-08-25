@@ -1,0 +1,304 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+---
+
+<Base
+  title="Contact"
+  description={`Contact Corrective Bodyworks in Notasulga, Alabama. Call ${site.phone} or send a message to request an appointment.`}
+>
+  <PageHero
+    eyebrow="Get in touch"
+    title="Request an appointment"
+    lede="Tell us what is going on and we will get back to you quickly. If you would rather talk it through, calling is always the fastest way to reach us."
+  />
+
+  <section class="section">
+    <div class="wrap contact">
+      <!-- ── Form ──────────────────────────────────────────────────────── -->
+      <div class="contact__form reveal">
+        <h2>Send us a message</h2>
+        <p class="contact__formNote">
+          Please keep your message general. Do not include detailed medical information —
+          this form is not a secure channel for protected health information.
+        </p>
+
+        <!--
+          Wired for Netlify Forms: submissions appear in the Netlify dashboard
+          with no backend to maintain. If you host elsewhere, swap the `action`
+          and remove the `data-netlify` attributes.
+        -->
+        <form
+          name="appointment"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="company"
+          action="/thank-you/"
+        >
+          <input type="hidden" name="form-name" value="appointment" />
+          <p class="hp">
+            <label>Do not fill this out: <input name="company" /></label>
+          </p>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Name <span aria-hidden="true">*</span></label>
+              <input id="name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="phone">Phone <span aria-hidden="true">*</span></label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">Email <span aria-hidden="true">*</span></label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="field">
+            <label for="reason">What can we help with?</label>
+            <select id="reason" name="reason">
+              <option>New patient evaluation</option>
+              <option>Existing patient — scheduling</option>
+              <option>Insurance or billing question</option>
+              <option>Something else</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5"
+              placeholder="Briefly, what's bothering you and how long has it been going on?"></textarea>
+          </div>
+
+          <button class="btn btn--primary" type="submit">Send message</button>
+        </form>
+      </div>
+
+      <!-- ── Details ───────────────────────────────────────────────────── -->
+      <aside class="contact__aside reveal">
+        <div class="cbox">
+          <h2>Clinic details</h2>
+          <ul class="cbox__list">
+            <li>
+              <Icon name="pin" size={21} />
+              <div>
+                <strong>Address</strong>
+                <a href={site.mapsUrl} target="_blank" rel="noopener noreferrer">
+                  {site.address.street}<br />
+                  {site.address.city}, {site.address.state} {site.address.zip}
+                </a>
+              </div>
+            </li>
+            <li>
+              <Icon name="phone" size={21} />
+              <div>
+                <strong>Phone</strong>
+                <a href={site.phoneHref}>{site.phone}</a>
+              </div>
+            </li>
+            <li>
+              <Icon name="check" size={21} />
+              <div>
+                <strong>Email</strong>
+                <a href={`mailto:${site.email}`}>{site.email}</a>
+              </div>
+            </li>
+            <li>
+              <Icon name="clock" size={21} />
+              <div>
+                <strong>Hours</strong>
+                {site.hours.map((h) => <span class="cbox__hours">{h.day}: {h.time}</span>)}
+              </div>
+            </li>
+          </ul>
+
+          <a class="btn btn--primary cbox__call" href={site.phoneHref}>
+            <Icon name="phone" size={17} /> Call the clinic
+          </a>
+        </div>
+
+        <div class="contact__map">
+          <iframe
+            src={site.mapsEmbedUrl}
+            title="Map to Corrective Bodyworks"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .contact {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .contact__form h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .contact__formNote {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    max-width: 56ch;
+  }
+
+  .hp {
+    position: absolute;
+    left: -9999px;
+  }
+
+  .field {
+    display: grid;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--slate-600);
+  }
+
+  label span {
+    color: #b4472f;
+  }
+
+  input,
+  select,
+  textarea {
+    font: inherit;
+    font-size: 1rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #fff;
+    color: var(--text);
+    width: 100%;
+    transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--slate-600);
+    box-shadow: 0 0 0 3px rgba(76, 100, 122, 0.16);
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  .contact__aside {
+    display: grid;
+    gap: 1.5rem;
+    position: sticky;
+    top: 120px;
+  }
+
+  .cbox {
+    background: var(--bg-alt);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .cbox h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cbox__list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1.35rem;
+  }
+
+  .cbox__list li {
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+  }
+
+  .cbox__list :global(svg) {
+    flex: none;
+    margin-top: 0.2rem;
+    color: var(--slate-600);
+  }
+
+  .cbox__list strong {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--slate-600);
+    margin-bottom: 0.25rem;
+  }
+
+  .cbox__list a {
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  .cbox__list a:hover {
+    color: var(--slate-600);
+  }
+
+  .cbox__hours {
+    display: block;
+    font-size: 0.95rem;
+  }
+
+  .cbox__call {
+    width: 100%;
+    margin-top: 1.75rem;
+  }
+
+  .contact__map {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    aspect-ratio: 4 / 3;
+  }
+
+  .contact__map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  @media (max-width: 900px) {
+    .contact {
+      grid-template-columns: 1fr;
+    }
+    .contact__aside {
+      position: static;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .field-row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+</style>

@@ -1,0 +1,270 @@
+---
+import { site, nav } from '../data/site';
+const path = Astro.url.pathname;
+const isActive = (href: string) => path === href;
+---
+
+<header class="hdr" data-header>
+  <div class="wrap hdr__inner">
+    <a class="hdr__brand" href="/" aria-label={`${site.name} — home`}>
+      <img
+        src="/logo-horizontal.png"
+        alt={`${site.name} ${site.tagline}`}
+        width="2500"
+        height="885"
+        fetchpriority="high"
+      />
+    </a>
+
+    <nav class="hdr__nav" aria-label="Primary">
+      <ul>
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="hdr__actions">
+      <a class="hdr__phone" href={site.phoneHref}>
+        <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
+          <path
+            fill="currentColor"
+            d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z"
+          ></path>
+        </svg>
+        <span>{site.phone}</span>
+      </a>
+      <a class="btn btn--primary hdr__cta" href="/contact/">{site.booking.label}</a>
+    </div>
+
+    <button class="hdr__toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" data-toggle>
+      <span class="visually-hidden">Menu</span>
+      <span class="hdr__bars" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
+  </div>
+
+  <nav class="mnav" id="mobile-nav" aria-label="Mobile" data-mobile hidden>
+    <ul>
+      {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+    </ul>
+    <div class="mnav__foot">
+      <a class="btn btn--primary" href="/contact/">{site.booking.label}</a>
+      <a class="mnav__phone" href={site.phoneHref}>{site.phone}</a>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .hdr {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    transition: box-shadow 0.3s var(--ease);
+  }
+
+  .hdr[data-scrolled] {
+    box-shadow: var(--shadow-sm);
+  }
+
+  .hdr__inner {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 3vw, 2.5rem);
+    min-height: 88px;
+  }
+
+  .hdr__brand {
+    flex: none;
+    line-height: 0;
+  }
+
+  .hdr__brand img {
+    width: clamp(180px, 20vw, 250px);
+    height: auto;
+  }
+
+  .hdr__nav {
+    margin-left: auto;
+  }
+
+  .hdr__nav ul {
+    display: flex;
+    gap: clamp(1.25rem, 2.4vw, 2.25rem);
+    list-style: none;
+    padding: 0;
+  }
+
+  .hdr__nav a {
+    position: relative;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--navy-900);
+    padding-block: 0.4rem;
+  }
+
+  .hdr__nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--slate-600);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s var(--ease);
+  }
+
+  .hdr__nav a:hover::after,
+  .hdr__nav a[aria-current='page']::after {
+    transform: scaleX(1);
+  }
+
+  .hdr__actions {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex: none;
+  }
+
+  .hdr__phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--navy-900);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .hdr__phone:hover {
+    color: var(--slate-600);
+  }
+
+  .hdr__cta {
+    padding: 0.75rem 1.4rem;
+    font-size: 0.8125rem;
+  }
+
+  .hdr__toggle {
+    display: none;
+    margin-left: auto;
+    background: none;
+    border: 0;
+    padding: 0.6rem;
+    cursor: pointer;
+    color: var(--navy-900);
+  }
+
+  .hdr__bars {
+    display: grid;
+    gap: 5px;
+    width: 26px;
+  }
+
+  .hdr__bars i {
+    display: block;
+    height: 2px;
+    background: currentColor;
+    transition: transform 0.3s var(--ease), opacity 0.2s var(--ease);
+  }
+
+  .hdr__toggle[aria-expanded='true'] i:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hdr__toggle[aria-expanded='true'] i:nth-child(2) {
+    opacity: 0;
+  }
+  .hdr__toggle[aria-expanded='true'] i:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .mnav {
+    border-top: 1px solid var(--border);
+    background: #fff;
+    padding: 1.25rem var(--gutter) 2rem;
+  }
+
+  .mnav[hidden] {
+    display: none;
+  }
+
+  .mnav ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+  }
+
+  .mnav a {
+    display: block;
+    padding: 0.9rem 0;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--navy-900);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .mnav__foot {
+    display: grid;
+    gap: 0.9rem;
+    margin-top: 1.5rem;
+    justify-items: start;
+  }
+
+  .mnav__phone {
+    font-weight: 700;
+    color: var(--navy-900);
+    text-decoration: none;
+  }
+
+  @media (max-width: 1000px) {
+    .hdr__nav,
+    .hdr__actions {
+      display: none;
+    }
+    .hdr__toggle {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1001px) {
+    .mnav {
+      display: none !important;
+    }
+  }
+</style>
+
+<script>
+  const header = document.querySelector('[data-header]');
+  const toggle = document.querySelector('[data-toggle]');
+  const mobile = document.querySelector('[data-mobile]');
+
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    if (mobile) (mobile as HTMLElement).hidden = open;
+  });
+
+  const onScroll = () => {
+    if (window.scrollY > 8) header?.setAttribute('data-scrolled', '');
+    else header?.removeAttribute('data-scrolled');
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>

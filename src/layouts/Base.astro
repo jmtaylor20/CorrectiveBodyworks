@@ -1,0 +1,112 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Set on the homepage so the <title> is not doubled up. */
+  bareTitle?: boolean;
+}
+
+const {
+  title,
+  description = site.description,
+  bareTitle = false,
+} = Astro.props;
+
+const pageTitle = !title
+  ? `${site.name} | ${site.tagline}`
+  : bareTitle
+    ? title
+    : `${title} | ${site.name}`;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+
+// Pre-launch guard: keep the site out of search results until launch day.
+// Set PUBLIC_PRELAUNCH="false" in the host's env vars to go live.
+const prelaunch = import.meta.env.PUBLIC_PRELAUNCH !== 'false';
+
+const localBusiness = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalBusiness',
+  name: site.legalName,
+  description: site.description,
+  url: Astro.site?.href,
+  telephone: site.phone,
+  email: site.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    addressLocality: site.address.city,
+    addressRegion: site.address.state,
+    postalCode: site.address.zip,
+    addressCountry: 'US',
+  },
+  medicalSpecialty: 'PhysicalTherapy',
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {prelaunch && <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL('/logo-horizontal.png', Astro.site).href} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#011b3a" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(localBusiness)} />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Progressive reveal — purely decorative, so it degrades to "always
+      // visible" when IntersectionObserver is unavailable.
+      const items = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.08 }
+        );
+        items.forEach((el) => io.observe(el));
+      } else {
+        items.forEach((el) => el.classList.add('is-visible'));
+      }
+    </script>
+  </body>
+</html>
