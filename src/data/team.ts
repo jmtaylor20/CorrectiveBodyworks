@@ -52,8 +52,7 @@ export const team: TeamMember[] = [
     name: 'Cameron Elliott',
     credentials: 'PT, MPT',
     role: 'Physical Therapist',
-    // TODO: add Cameron's headshot to /public/team/cameron-elliott.jpg
-    photo: null,
+    photo: '/team/cameron-elliott.jpg',
     lede:
       'More than 25 years of helping patients restore mobility, reduce pain, and get back to the activities they love most.',
     bio: [
