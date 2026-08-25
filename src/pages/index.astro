@@ -35,7 +35,7 @@ const featured = services.slice(0, 6);
 
       <div class="hero__panel" aria-hidden="true">
         <div class="hero__ring"></div>
-        <img src="/logo-horizontal.png" alt="" width="2500" height="885" />
+        <img src="/logo-mark.png" alt="" width="325" height="453" />
       </div>
     </div>
   </section>
@@ -283,15 +283,19 @@ const featured = services.slice(0, 6);
     border-radius: 50%;
     background: radial-gradient(
       circle at 40% 35%,
-      rgba(76, 100, 122, 0.16),
-      rgba(1, 27, 58, 0.06) 55%,
-      transparent 72%
+      rgba(76, 100, 122, 0.2),
+      rgba(1, 27, 58, 0.07) 55%,
+      transparent 74%
     );
   }
 
+  /* Reads as a brand watermark rather than a second copy of the header
+     wordmark. Swap this block for clinic photography when it's available. */
   .hero__panel img {
     position: relative;
-    width: 78%;
+    width: auto;
+    height: 68%;
+    opacity: 0.92;
   }
 
   /* --- shared section furniture --- */

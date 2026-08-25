@@ -6,7 +6,7 @@ const year = new Date().getFullYear();
 <footer class="ftr">
   <div class="wrap ftr__grid">
     <div class="ftr__brand">
-      <img src="/logo-horizontal.png" alt={site.name} width="2500" height="885" loading="lazy" />
+      <img src="/logo-horizontal-white.png" alt={site.name} width="2500" height="885" loading="lazy" />
       <p>{site.description}</p>
     </div>
 
@@ -73,10 +73,6 @@ const year = new Date().getFullYear();
   .ftr__brand img {
     width: 230px;
     margin-bottom: 1.25rem;
-    /* Logo artwork is dark navy on white — knock it back to white for the
-       dark footer rather than shipping a second file. */
-    filter: brightness(0) invert(1);
-    opacity: 0.95;
   }
 
   .ftr__brand p {
