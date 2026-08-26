@@ -27,13 +27,14 @@ export const team: TeamMember[] = [
       'He works with patients of every kind: adult and youth athletes, people rehabilitating an injury, and the "industrial athletes" whose work puts hard demands on their bodies. Jeff has a particular interest in runners and in orthotic intervention, and he takes real satisfaction in helping people get back to work and back to enjoying life.',
     ],
     certifications: [
+      'PTA — Licensed Physical Therapist Assistant',
+      'ATC — Certified Athletic Trainer',
+      'LMT — Licensed Massage Therapist',
       'CIDN — Certified Integrative Dry Needling',
       'ART — Active Release Techniques',
       'PRRT — Primal Reflex Release Techniques',
       'Fascial Manipulation',
-      'Certified Athletic Trainer (ATC)',
       'Corrective Exercise Specialist',
-      'Licensed Massage Therapist',
     ],
     focus: [
       'Outpatient orthopedic physical therapy',
