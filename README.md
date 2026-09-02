@@ -89,9 +89,19 @@ self-registrations, and the Enable Patient Self-Scheduling toggle. The URL shown
 there matches the one wired into `src/data/site.ts`, so the dashboard is the
 place to confirm it after any change.
 
-PT Everywhere has not issued a separate branded patient sign-in URL. Existing
-patients sign in at the shared `app.pteverywhere.com`, which is what the site
-links to.
+A branded portal subdomain is available on that same page, under **Portal
+Subdomain**. It gives the practice a URL of the form
+`correctivebodyworks.pteverywhere.com` for patients to sign in and book, plus
+an optional alias. It is not tied to a plan tier: PT Everywhere prices per
+seat, not per feature.
+
+Until it is configured, the site links to the shared `app.pteverywhere.com`,
+which works fine. Once set, put it in `portal.login` in `src/data/site.ts`.
+
+Unlike PT Everywhere's path based URLs, a subdomain is verifiable: there is no
+wildcard DNS on `pteverywhere.com`, so an unconfigured name returns no DNS
+record and a configured one resolves. Check with
+`getent hosts <name>.pteverywhere.com` before wiring it in.
 
 ### Wiring it up
 
