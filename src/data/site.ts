@@ -38,22 +38,21 @@ export const site = {
 
   // PT Everywhere.
   //
-  // Each practice gets its own public PT Everywhere pages, following the
-  // pattern used by other PT Everywhere clinics:
+  // Live links issued by PT Everywhere Client Care for this practice. Note
+  // the two paths are not symmetrical: registration sits under /s/ and
+  // online booking does not. Copy them exactly, do not tidy them up.
   //
-  //   portal:   https://pteverywhere.com/PtE/s/<slug>
-  //   register: https://pteverywhere.com/PtE/s/<slug>/register
-  //
-  // Ask PT Everywhere Client Care for this practice's exact slug. Do not
-  // guess it: the pages are client-rendered, so a wrong slug fails silently
-  // rather than 404ing, and could send patients to another clinic.
-  //
-  // Set `clinicUrl` and `registerUrl` below and the portal page and header
-  // link switch to them automatically. While they are empty the site falls
-  // back to the generic PT Everywhere login, which still works.
+  // Every page is client rendered, so a wrong id returns a normal looking
+  // empty shell rather than a 404. Click both after any change.
   portal: {
-    clinicUrl: '',
-    registerUrl: '',
+    // Public self-scheduling. Drives every "Request an Appointment" button.
+    booking:
+      'https://app.pteverywhere.com/69d3ad9de10addc51c61ac84/bookingonline',
+    // New patient self registration.
+    registerUrl:
+      'https://app.pteverywhere.com/s/69d3ad9de10addc51c61ac84/register',
+    // Existing patient sign in. PT Everywhere has not issued a practice
+    // specific login page, so this is the shared one, which is correct.
     login: 'https://app.pteverywhere.com/',
     help: 'https://help.pteverywhere.com/kb',
     ios: 'https://apps.apple.com/us/app/pteverywhere/id1097797473',
@@ -62,7 +61,6 @@ export const site = {
   },
 
   booking: {
-    url: '',
     label: 'Request an Appointment',
   },
 
@@ -85,15 +83,14 @@ export const nav = [
  * A new patient who cannot self-book should still land somewhere useful.
  */
 export const bookingHref = (): string =>
-  site.booking.url || site.portal.registerUrl || '/contact/';
+  site.portal.booking || site.portal.registerUrl || '/contact/';
 
 /** True when the booking link leaves our domain and needs target/rel. */
 export const bookingIsExternal = (): boolean => /^https?:/i.test(bookingHref());
 
 /** Where patients sign in: the practice's own PT Everywhere page when it is
  *  configured, otherwise the generic PT Everywhere login. */
-export const portalLoginHref = (): string =>
-  site.portal.clinicUrl || site.portal.login;
+export const portalLoginHref = (): string => site.portal.login;
 
 /** The practice's new-patient registration page, or null when not set. */
 export const portalRegisterHref = (): string | null =>

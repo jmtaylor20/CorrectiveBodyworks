@@ -6,7 +6,6 @@ import { site, portalLoginHref, portalRegisterHref } from '../data/site';
 
 const loginUrl = portalLoginHref();
 const registerUrl = portalRegisterHref();
-const hasClinicPage = Boolean(site.portal.clinicUrl);
 
 const canDo = [
   { icon: 'clock', title: 'Appointments', body: 'See upcoming visits and, where the clinic has it enabled, request or reschedule an appointment yourself.' },
@@ -45,7 +44,7 @@ const canDo = [
             Open the patient portal
           </a>
           <p class="portal__meta">
-            Opens {hasClinicPage ? 'our PT Everywhere page' : 'app.pteverywhere.com'} in a new tab.
+            Opens app.pteverywhere.com in a new tab.
           </p>
           {
             registerUrl && (
