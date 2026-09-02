@@ -540,19 +540,44 @@ const featured = services.slice(0, 6);
       max-width: none;
     }
 
-    /* Already full width outside the wrap; just cancel the section padding
-       below it so it runs to the section edge. */
+    /* Full width already, being outside the wrap. No negative bottom margin:
+       the fade dissolves the image into the page, so it does not need to
+       reach the section edge to feel part of it. */
     .hero__panel {
       position: static;
       width: auto;
-      margin: 2.5rem 0 calc(-1 * clamp(3.5rem, 8vw, 7rem));
+      margin: 2.5rem 0 0;
     }
 
+    /* Fades out at the bottom rather than the top, so his head stays whole.
+       Taller crop gives the head room above and the fade room below. */
     .hero__panel img {
-      aspect-ratio: 3 / 2;
-      object-position: 58% 18%;
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
-      mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
+      aspect-ratio: 4 / 5;
+      object-position: 58% 12%;
+      -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent 98%);
+      mask-image: linear-gradient(to bottom, #000 62%, transparent 98%);
+    }
+
+    /* Out of the picture entirely and back into the page, so nothing sits
+       over his face. */
+    .hero__panel figcaption {
+      position: static;
+      margin: -1.5rem var(--gutter) 0;
+      padding: 0 0 0 1rem;
+      background: none;
+      backdrop-filter: none;
+      border-left: 3px solid var(--slate-600);
+      border-radius: 0;
+    }
+
+    .hero__panel figcaption strong {
+      font-size: 1.25rem;
+      color: var(--navy-900);
+    }
+
+    .hero__panel figcaption span {
+      font-size: 0.75rem;
+      color: var(--slate-600);
     }
     .sec-head {
       align-items: start;
