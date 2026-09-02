@@ -21,11 +21,30 @@ find the fields, Client Care can point you at them.
 Upload the widest version the field allows. PT Everywhere will scale it down,
 and starting large keeps it sharp on high-resolution screens.
 
+## Landing background
+
+| File | Use it for |
+| --- | --- |
+| `bg-landing-2560x1440.jpg` | Primary. Wide desktop landing or login background, 16:9. |
+| `bg-landing-1920x1080.jpg` | Same image at 1080p, if there is an upload size limit. |
+| `bg-landing-mobile-1170x2050.jpg` | Portrait crop, if the portal takes a separate mobile background. |
+
+Designed to sit under content rather than compete with it. The left and centre
+are deliberately calm so a login card or welcome panel has somewhere to land,
+and the cross and tree mark sits quietly in the right third. White text placed
+anywhere on the image measures at worst 10.9:1 contrast, comfortably past the
+4.5:1 accessibility threshold, so overlaid copy stays readable wherever the
+portal decides to put it.
+
+If the portal crops rather than letterboxes, it will crop toward the centre,
+which keeps the composition intact. The design rationale is in
+`DESIGN-PHILOSOPHY.md`.
+
 ## Colors
 
 | Role | Hex | Notes |
 | --- | --- | --- |
-| Primary navy | `#011B3A` | Buttons, headers, primary actions. Sampled from the logo. |
+| **Header navy** | **`#011B3A`** | **The header color.** Also buttons and primary actions. Sampled from the logo. |
 | Secondary slate | `#4C647A` | Accents, secondary buttons, icons. |
 | Light mist | `#CED4DA` | Borders and dividers. |
 | Off white | `#F5F7F9` | Section backgrounds. |
