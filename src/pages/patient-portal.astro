@@ -1,0 +1,312 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import { site, portalLoginHref, portalRegisterHref } from '../data/site';
+
+const loginUrl = portalLoginHref();
+const registerUrl = portalRegisterHref();
+const hasClinicPage = Boolean(site.portal.clinicUrl);
+
+const canDo = [
+  { icon: 'clock', title: 'Appointments', body: 'See upcoming visits and, where the clinic has it enabled, request or reschedule an appointment yourself.' },
+  { icon: 'check', title: 'Forms and consents', body: 'Complete intake paperwork and e-sign consent forms from your phone before you arrive, so your first visit starts on time.' },
+  { icon: 'activity', title: 'Home exercise program', body: 'Watch video demonstrations of the exercises assigned to you, and track what you have finished.' },
+  { icon: 'briefcase', title: 'Billing', body: 'View invoices, pay an outstanding balance, and download a superbill for your insurance.' },
+  { icon: 'phone', title: 'Secure messaging', body: 'Message your therapist directly with questions between visits.' },
+];
+---
+
+<Base
+  title="Patient Portal"
+  description="Log in to the Corrective Bodyworks patient portal, powered by PT Everywhere, to view appointments, complete forms, follow your home exercise program, and pay a balance."
+>
+  <PageHero
+    eyebrow="For current patients"
+    title="Patient portal"
+    lede="Your appointments, paperwork, exercise program, and billing all live in one place. Corrective Bodyworks uses PT Everywhere, so you sign in through their secure portal."
+  />
+
+  <section class="section">
+    <div class="wrap portal">
+      <div class="portal__main">
+        <div class="portal__card reveal">
+          <h2>Sign in</h2>
+          <p>
+            Use the email address the clinic has on file for you. The portal works
+            in any browser, and Chrome is recommended.
+          </p>
+          <a
+            class="btn btn--primary portal__cta"
+            href={loginUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open the patient portal
+          </a>
+          <p class="portal__meta">
+            Opens {hasClinicPage ? 'our PT Everywhere page' : 'app.pteverywhere.com'} in a new tab.
+          </p>
+          {
+            registerUrl && (
+              <p class="portal__reg">
+                New patient? <a href={registerUrl} target="_blank" rel="noopener noreferrer">Register here</a> to get set up.
+              </p>
+            )
+          }
+        </div>
+
+        <div class="portal__card reveal">
+          <h2>Or use the app</h2>
+          <p>
+            The PT Everywhere app has the same features as the website, plus push
+            reminders for upcoming visits and exercises.
+          </p>
+          <div class="btn-row">
+            <a class="btn btn--ghost" href={site.portal.ios} target="_blank" rel="noopener noreferrer">
+              iPhone and iPad
+            </a>
+            <a class="btn btn--ghost" href={site.portal.android} target="_blank" rel="noopener noreferrer">
+              Android
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="portal__aside reveal">
+        <div class="pbox">
+          <h2>Not set up yet?</h2>
+          <p>
+            Portal accounts are created by the clinic, so there is nothing to sign
+            up for on your own. Once you are booked as a patient we will send an
+            invitation to your email address, and that link gets you started.
+          </p>
+          <p>
+            If you have not received one, or you are not a patient yet, get in touch
+            and we will take care of it.
+          </p>
+          <div class="pbox__actions">
+            <a class="btn btn--primary" href={site.phoneHref}>
+              <Icon name="phone" size={17} /> {site.phone}
+            </a>
+            <a class="btn btn--ghost" href="/contact/">Contact the clinic</a>
+          </div>
+        </div>
+
+        <div class="pbox pbox--quiet">
+          <h3>Trouble signing in?</h3>
+          <p>
+            On the login screen, choose <strong>Need help logging in?</strong> to
+            reset your password by email or security question. PT Everywhere also
+            keeps a help center for portal and app questions.
+          </p>
+          <a class="arrow-link" href={site.portal.help} target="_blank" rel="noopener noreferrer">
+            PT Everywhere help center <Icon name="arrow" size={18} />
+          </a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--alt">
+    <div class="wrap">
+      <div class="reveal cando-head">
+        <p class="eyebrow">Inside the portal</p>
+        <h2>What you can do</h2>
+        <p class="lede">
+          Exactly which features are switched on can vary, so if you do not see
+          something here, just ask us.
+        </p>
+      </div>
+
+      <div class="grid cando">
+        {
+          canDo.map((item) => (
+            <div class="cando__item reveal">
+              <span class="cando__icon"><Icon name={item.icon} size={24} /></span>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .portal {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(2rem, 5vw, 3.5rem);
+    align-items: start;
+  }
+
+  .portal__main {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .portal__card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.75rem, 3vw, 2.25rem);
+  }
+
+  .portal__card h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .portal__card p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    max-width: 46ch;
+  }
+
+  .portal__cta {
+    margin-top: 1.5rem;
+  }
+
+  .portal__meta {
+    margin-top: 0.85rem;
+    font-size: 0.85rem !important;
+    color: var(--text-muted);
+  }
+
+  .portal__reg {
+    margin-top: 1rem;
+    font-size: 0.95rem !important;
+  }
+
+  .portal__card .btn-row {
+    margin-top: 1.5rem;
+  }
+
+  .portal__aside {
+    display: grid;
+    gap: 1.5rem;
+    position: sticky;
+    top: 120px;
+  }
+
+  .pbox {
+    background: var(--navy-900);
+    color: var(--text-invert-muted);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.75rem, 3vw, 2.25rem);
+  }
+
+  .pbox h2 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .pbox p + p {
+    margin-top: 0.9rem;
+  }
+
+  .pbox p {
+    font-size: 1rem;
+  }
+
+  .pbox__actions {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    justify-items: stretch;
+  }
+
+  .pbox__actions .btn--primary {
+    background: #fff;
+    border-color: #fff;
+    color: var(--navy-900);
+  }
+
+  .pbox__actions .btn--primary:hover {
+    background: transparent;
+    color: #fff;
+  }
+
+  .pbox__actions .btn--ghost {
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #fff;
+  }
+
+  .pbox__actions .btn--ghost:hover {
+    background: #fff;
+    color: var(--navy-900);
+  }
+
+  .pbox--quiet {
+    background: var(--bg-alt);
+    color: var(--text-muted);
+  }
+
+  .pbox--quiet h3 {
+    margin-bottom: 0.75rem;
+  }
+
+  .pbox--quiet strong {
+    color: var(--navy-900);
+  }
+
+  .pbox--quiet .arrow-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy-900);
+    text-decoration: none;
+  }
+
+  .cando-head {
+    max-width: 62ch;
+    margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+  }
+
+  .cando-head .lede {
+    margin-top: 1rem;
+  }
+
+  .cando {
+    grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  }
+
+  .cando__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--slate-600);
+    margin-bottom: 1.15rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .cando__item h3 {
+    margin-bottom: 0.55rem;
+  }
+
+  .cando__item p {
+    color: var(--text-muted);
+    font-size: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    .portal {
+      grid-template-columns: 1fr;
+    }
+    .portal__aside {
+      position: static;
+    }
+  }
+</style>

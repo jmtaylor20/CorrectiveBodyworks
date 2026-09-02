@@ -344,12 +344,12 @@ const featured = services.slice(0, 6);
 
   /* --- cards --- */
   .cards {
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr));
   }
 
   /* --- differentiators --- */
   .diffs {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
   }
 
   .diff__num {
@@ -372,7 +372,7 @@ const featured = services.slice(0, 6);
 
   /* --- team cards --- */
   .team-grid {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   }
 
   .tcard {

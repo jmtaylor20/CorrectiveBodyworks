@@ -142,6 +142,10 @@ import { site } from '../data/site';
     align-items: start;
   }
 
+  .contact__form {
+    min-width: 0;
+  }
+
   .contact__form h2 {
     margin-bottom: 0.75rem;
   }
@@ -162,6 +166,9 @@ import { site } from '../data/site';
     display: grid;
     gap: 0.4rem;
     margin-bottom: 1.25rem;
+    /* Grid and flex items default to min-width:auto, which stops a select
+       shrinking below its longest option and overflows narrow screens. */
+    min-width: 0;
   }
 
   .field-row {
@@ -193,6 +200,7 @@ import { site } from '../data/site';
     background: #fff;
     color: var(--text);
     width: 100%;
+    min-width: 0;
     transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
   }
 
@@ -211,6 +219,7 @@ import { site } from '../data/site';
   .contact__aside {
     display: grid;
     gap: 1.5rem;
+    min-width: 0;
     position: sticky;
     top: 120px;
   }
@@ -257,6 +266,9 @@ import { site } from '../data/site';
   .cbox__list a {
     text-decoration: none;
     color: var(--text);
+    /* The email address is one long unbreakable token. Without this it sets
+       the grid track's minimum width and overflows narrow screens. */
+    overflow-wrap: anywhere;
   }
 
   .cbox__list a:hover {

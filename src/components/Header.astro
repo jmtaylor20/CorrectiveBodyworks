@@ -5,6 +5,34 @@ const path = Astro.url.pathname;
 const isActive = (href: string) => path === href;
 ---
 
+<!-- Utility strip. Scrolls away; the main header below it stays sticky. -->
+<div class="util">
+  <div class="wrap util__inner">
+    <a class="util__link util__addr" href={site.mapsUrl} target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+        <path d="M12 21s7-6.4 7-11a7 7 0 1 0-14 0c0 4.6 7 11 7 11z" />
+        <circle cx="12" cy="10" r="2.5" />
+      </svg>
+      <span>{site.address.city}, {site.address.state}</span>
+    </a>
+
+    <a class="util__link util__tel" href={site.phoneHref} aria-label={`Call ${site.phone}`}>
+      <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+        <path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.6a1 1 0 0 1-.25 1z" />
+      </svg>
+      <span>{site.phone}</span>
+    </a>
+
+    <a class="util__portal" href="/patient-portal/">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <rect x="4" y="10.5" width="16" height="10" rx="2" />
+        <path d="M8 10.5V7a4 4 0 0 1 8 0v3.5" />
+      </svg>
+      <span>Patient Portal<span class="util__login"> Login</span></span>
+    </a>
+  </div>
+</div>
+
 <header class="hdr" data-header>
   <div class="wrap hdr__inner">
     <a class="hdr__brand" href="/" aria-label={`${site.name}, home`}>
@@ -62,6 +90,107 @@ const isActive = (href: string) => path === href;
 </header>
 
 <style>
+  .util {
+    background: var(--navy-900);
+    color: var(--text-invert-muted);
+    font-size: 0.8125rem;
+  }
+
+  .util__inner {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-height: 40px;
+  }
+
+  .util a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .util a:hover {
+    color: #fff;
+  }
+
+  .util__link svg {
+    opacity: 0.8;
+  }
+
+  .util__tel {
+    margin-right: auto;
+  }
+
+  /* The main header already shows the phone at desktop widths. Only surface
+     it up here once the header collapses to the hamburger. */
+  @media (min-width: 1241px) {
+    /* `.util a` sets display, so match its specificity to override it. */
+    .util a.util__tel {
+      display: none;
+    }
+    .util a.util__addr {
+      margin-right: auto;
+    }
+  }
+
+  .util__portal {
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #fff !important;
+    padding: 0.35rem 0.9rem;
+    margin-right: -0.9rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.18);
+    padding-left: 1.25rem;
+  }
+
+  .util__portal:hover {
+    color: var(--mist-200) !important;
+  }
+
+  @media (max-width: 700px) {
+    .util a.util__addr {
+      display: none;
+    }
+    .util__inner {
+      gap: 1rem;
+      justify-content: space-between;
+    }
+    .util__portal {
+      border-left: 0;
+      padding-left: 0;
+      margin-right: 0;
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .util__login {
+      display: none;
+    }
+    .util__inner {
+      gap: 0.6rem;
+    }
+    .util a {
+      font-size: 0.72rem;
+    }
+    .util svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  /* Narrowest phones: keep the tap-to-call icon, drop the digits, so the
+     portal link always fits. */
+  @media (max-width: 380px) {
+    .util__tel span {
+      display: none;
+    }
+  }
+
   .hdr {
     position: sticky;
     top: 0;
@@ -235,7 +364,7 @@ const isActive = (href: string) => path === href;
     text-decoration: none;
   }
 
-  @media (max-width: 1000px) {
+  @media (max-width: 1240px) {
     .hdr__nav,
     .hdr__actions {
       display: none;
@@ -245,7 +374,7 @@ const isActive = (href: string) => path === href;
     }
   }
 
-  @media (min-width: 1001px) {
+  @media (min-width: 1241px) {
     .mnav {
       display: none !important;
     }
