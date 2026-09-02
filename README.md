@@ -89,19 +89,34 @@ self-registrations, and the Enable Patient Self-Scheduling toggle. The URL shown
 there matches the one wired into `src/data/site.ts`, so the dashboard is the
 place to confirm it after any change.
 
-A branded portal subdomain is available on that same page, under **Portal
-Subdomain**. It gives the practice a URL of the form
-`correctivebodyworks.pteverywhere.com` for patients to sign in and book, plus
-an optional alias. It is not tied to a plan tier: PT Everywhere prices per
-seat, not per feature.
+PT Everywhere's in-app assistant claims a **Portal Subdomain** section exists
+on this page, giving a URL like `correctivebodyworks.pteverywhere.com`. As of
+the last check that section is not present, and the evidence says the feature
+does not exist:
 
-Until it is configured, the site links to the shared `app.pteverywhere.com`,
-which works fine. Once set, put it in `portal.login` in `src/data/site.ts`.
+- The section is absent from the page the assistant named.
+- PT Everywhere's own documentation states patient sign in is
+  `app.pteverywhere.com` or the mobile app, with no per practice URL.
+- The pricing page never mentions it.
+- No clinic subdomain found anywhere resolves in DNS. There is no wildcard
+  record on `pteverywhere.com`, so a configured subdomain would resolve.
+  Only company subdomains exist: `app`, `help`, `wp`, `lp`.
+- PHYT Collective, a large PT Everywhere practice, uses a path based portal
+  URL rather than a subdomain.
 
-Unlike PT Everywhere's path based URLs, a subdomain is verifiable: there is no
-wildcard DNS on `pteverywhere.com`, so an unconfigured name returns no DNS
-record and a configured one resolves. Check with
-`getent hosts <name>.pteverywhere.com` before wiring it in.
+Treat the assistant's answers about URLs and settings as unverified. It has
+given several confident, specific and wrong answers on this topic.
+
+Existing patients sign in at the shared `app.pteverywhere.com`, which is what
+the site links to and works correctly. If a human at
+support@pteverywhere.com ever confirms a practice specific URL, put it in
+`portal.login` in `src/data/site.ts`.
+
+Verification method, should one be offered: run
+`getent hosts <name>.pteverywhere.com`. Because there is no wildcard DNS, a
+real subdomain resolves and a nonexistent one returns nothing. This is the
+only PT Everywhere URL that can be verified without a browser, since their
+path based URLs return an identical page whether or not they exist.
 
 ### Wiring it up
 
