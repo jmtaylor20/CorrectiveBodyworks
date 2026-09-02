@@ -13,7 +13,7 @@ export const services: Service[] = [
     summary:
       'Individualized outpatient rehabilitation for injuries, post-operative recovery, and chronic orthopedic pain.',
     detail:
-      'Every plan of care starts with a thorough evaluation of how you actually move. From there we build a progressive program of hands-on treatment and targeted exercise designed to restore strength, mobility, and confidence in the affected area — and to keep the problem from returning.',
+      'Every plan of care starts with a thorough evaluation of how you actually move. From there we build a progressive program of hands-on treatment and targeted exercise designed to restore strength, mobility, and confidence in the affected area, and to keep the problem from returning.',
     icon: 'activity',
   },
   {
@@ -49,7 +49,7 @@ export const services: Service[] = [
     summary:
       'Targeted programming that resolves the muscular imbalances behind recurring pain.',
     detail:
-      'Pain often shows up far from its actual cause. Corrective exercise addresses the postural and movement imbalances — the overworked muscles, the ones that stopped firing — so the body can distribute load the way it was designed to.',
+      'Pain often shows up far from its actual cause. Corrective exercise addresses the postural and movement imbalances (the overworked muscles, the ones that stopped firing), so the body can distribute load the way it was designed to.',
     icon: 'balance',
   },
   {
@@ -65,7 +65,7 @@ export const services: Service[] = [
     slug: 'industrial-athletes',
     title: 'Work & Industrial Injury',
     summary:
-      'Rehabilitation for the "industrial athlete" — getting you back to work and back to life.',
+      'Rehabilitation for the "industrial athlete": getting you back to work and back to life.',
     detail:
       'Physically demanding jobs place athletic loads on the body without any of the conditioning. We treat work-related injuries with the same rigor as sports injuries, focusing on the strength and mechanics your specific job actually requires.',
     icon: 'briefcase',
@@ -88,7 +88,7 @@ export const differentiators = [
   },
   {
     title: 'One clinician, start to finish',
-    body: 'You see the same licensed clinician every visit — not a rotating cast of aides. Your treatment is delivered by the person who evaluated you and knows your history.',
+    body: 'You see the same licensed clinician every visit, not a rotating cast of aides. Your treatment is delivered by the person who evaluated you and knows your history.',
   },
   {
     title: 'Advanced manual therapy training',

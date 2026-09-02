@@ -1,4 +1,4 @@
-# Corrective Bodyworks — Rehabilitation & Wellness
+# Corrective Bodyworks: Rehabilitation & Wellness
 
 Marketing site for Corrective Bodyworks, LLC (Notasulga, AL), built with
 [Astro](https://astro.build) and deployed as a static site.
@@ -14,7 +14,7 @@ npm run preview  # serve the production build locally
 
 ## Where the content lives
 
-All copy and business details are data-driven — you should rarely need to touch
+All copy and business details are data-driven. You should rarely need to touch
 a page component to make an edit.
 
 | File | Contains |
@@ -50,6 +50,53 @@ or anything other than `"false"`:
 - [ ] Add staff headshots to `public/team/` and set the `photo` field in `src/data/team.ts`
 - [ ] Confirm clinic hours in `src/data/site.ts` (currently placeholder)
 - [ ] Confirm the public email address in `src/data/site.ts`
-- [ ] Wire up PT Everywhere booking + patient portal (`src/data/site.ts` → `booking`)
+- [ ] Add the PT Everywhere booking and portal URLs (see below)
 - [ ] Have a clinician review the FAQ answers on `/services/` for accuracy
 - [ ] Add social profile URLs in `src/data/site.ts` → `social`
+
+
+## Writing style
+
+No em dashes or en dashes anywhere, including in code comments. Use a comma, a
+colon, parentheses, a new sentence, or the word "to" for ranges. Regular hyphens
+in compound words are fine.
+
+`npm run check:dashes` enforces this and runs automatically as part of
+`npm run build`, so a stray dash fails the build rather than reaching the site.
+
+## PT Everywhere
+
+PT Everywhere does have an Open API, but it is **not** the right tool for this
+public marketing site:
+
+- It is not public. Documentation is free to subscribers but must be requested
+  from PT Everywhere Client Care, and is not self-service.
+- It is a back-office API. It exposes appointment types, visit recency,
+  birthdays and financials, aimed at business intelligence, accounting and
+  marketing automation.
+- It carries PHI and authenticates through AWS Cognito. Credentials that reach
+  protected health information must never sit in a static site's client-side
+  code, and any such integration needs a server-side component and a signed BAA.
+
+What belongs on this site instead is a **link out** to the practice's own PT
+Everywhere patient booking and portal pages, which is the normal pattern.
+
+### Wiring it up
+
+Set either value in `src/data/site.ts` under `booking`:
+
+```ts
+booking: {
+  url: 'https://...',        // public self-booking link
+  portalUrl: 'https://...',  // existing-patient login
+  label: 'Request an Appointment',
+},
+```
+
+Every call to action across the site switches over automatically, and external
+links get `target="_blank"` plus `rel="noopener noreferrer"`. Leave a value
+empty and it degrades gracefully: booking buttons fall back to `/contact/` and
+the portal link stays hidden. No other file needs to change.
+
+If a real API integration is wanted later (syncing appointments or patient
+data), that is a separate server-side project, not a change to this site.

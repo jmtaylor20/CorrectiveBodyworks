@@ -1,6 +1,7 @@
 ---
 import { site } from '../data/site';
 import Icon from './Icon.astro';
+import BookButton from './BookButton.astro';
 
 interface Props {
   heading?: string;
@@ -20,7 +21,7 @@ const {
       <p class="lede cta__body">{body}</p>
     </div>
     <div class="cta__actions">
-      <a class="btn btn--invert" href="/contact/">{site.booking.label}</a>
+      <BookButton variant="invert" />
       <a class="btn btn--outline-invert" href={site.phoneHref}>
         <Icon name="phone" size={17} />
         {site.phone}

@@ -1,0 +1,22 @@
+---
+import { site, bookingHref, bookingIsExternal } from '../data/site';
+
+interface Props {
+  variant?: 'primary' | 'invert' | 'ghost';
+  class?: string;
+  label?: string;
+}
+const { variant = 'primary', class: extra = '', label = site.booking.label } = Astro.props;
+
+const href = bookingHref();
+const external = bookingIsExternal();
+---
+
+<a
+  class:list={['btn', `btn--${variant}`, extra]}
+  href={href}
+  target={external ? '_blank' : undefined}
+  rel={external ? 'noopener noreferrer' : undefined}
+>
+  {label}
+</a>

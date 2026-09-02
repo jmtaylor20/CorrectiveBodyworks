@@ -1,12 +1,13 @@
 ---
 import { site, nav } from '../data/site';
+import BookButton from './BookButton.astro';
 const path = Astro.url.pathname;
 const isActive = (href: string) => path === href;
 ---
 
 <header class="hdr" data-header>
   <div class="wrap hdr__inner">
-    <a class="hdr__brand" href="/" aria-label={`${site.name} — home`}>
+    <a class="hdr__brand" href="/" aria-label={`${site.name}, home`}>
       <img
         src="/logo-horizontal.png"
         alt={`${site.name} ${site.tagline}`}
@@ -40,7 +41,7 @@ const isActive = (href: string) => path === href;
         </svg>
         <span>{site.phone}</span>
       </a>
-      <a class="btn btn--primary hdr__cta" href="/contact/">{site.booking.label}</a>
+      <BookButton class="hdr__cta" />
     </div>
 
     <button class="hdr__toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" data-toggle>
@@ -54,7 +55,7 @@ const isActive = (href: string) => path === href;
       {nav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
     </ul>
     <div class="mnav__foot">
-      <a class="btn btn--primary" href="/contact/">{site.booking.label}</a>
+      <BookButton />
       <a class="mnav__phone" href={site.phoneHref}>{site.phone}</a>
     </div>
   </nav>

@@ -20,19 +20,19 @@ export const team: TeamMember[] = [
     role: 'Owner & Clinician',
     photo: '/team/jeff-cotten.jpg',
     lede:
-      'Nearly 30 years of hands-on experience, focused on finding and correcting the imbalance behind the pain — not just treating the symptom.',
+      'Nearly 30 years of hands-on experience, focused on finding and correcting the imbalance behind the pain, not just treating the symptom.',
     bio: [
       'Jeff Cotten is a Physical Therapist Assistant, Certified Athletic Trainer, Corrective Exercise Specialist, and Licensed Massage Therapist with nearly 30 years of experience across a wide range of clinical settings. His practice centers on outpatient orthopedic physical therapy, manual therapy, and sports medicine.',
-      'Jeff has invested heavily in advanced manual therapy training, holding certifications in Integrative Dry Needling, Active Release Techniques, Primal Reflex Release Techniques, and Fascial Manipulation. He uses those tools to bring real relief and restore function — but his larger goal is always to correct the underlying musculoskeletal imbalances that caused the problem, so pain and dysfunction do not come back.',
+      'Jeff has invested heavily in advanced manual therapy training, holding certifications in Integrative Dry Needling, Active Release Techniques, Primal Reflex Release Techniques, and Fascial Manipulation. He uses those tools to bring real relief and restore function, but his larger goal is always to correct the underlying musculoskeletal imbalances that caused the problem, so pain and dysfunction do not come back.',
       'He works with patients of every kind: adult and youth athletes, people rehabilitating an injury, and the "industrial athletes" whose work puts hard demands on their bodies. Jeff has a particular interest in runners and in orthotic intervention, and he takes real satisfaction in helping people get back to work and back to enjoying life.',
     ],
     certifications: [
-      'PTA — Licensed Physical Therapist Assistant',
-      'ATC — Certified Athletic Trainer',
-      'LMT — Licensed Massage Therapist',
-      'CIDN — Certified Integrative Dry Needling',
-      'ART — Active Release Techniques',
-      'PRRT — Primal Reflex Release Techniques',
+      'Licensed Physical Therapist Assistant (PTA)',
+      'Certified Athletic Trainer (ATC)',
+      'Licensed Massage Therapist (LMT)',
+      'Certified Integrative Dry Needling (CIDN)',
+      'Active Release Techniques (ART)',
+      'Primal Reflex Release Techniques (PRRT)',
       'Fascial Manipulation',
       'Corrective Exercise Specialist',
     ],
@@ -45,7 +45,7 @@ export const team: TeamMember[] = [
       'Postural and movement correction',
     ],
     personal:
-      'Jeff is married with three children. Outside the clinic he is active in his church family and spends as much time outdoors as he can — hunting, fishing, and camping.',
+      'Jeff is married with three children. Outside the clinic he is active in his church family and spends as much time outdoors as he can: hunting, fishing, and camping.',
   },
   {
     slug: 'cameron-elliott',
@@ -68,8 +68,8 @@ export const team: TeamMember[] = [
       'Return to sport and daily activity',
     ],
     education: [
-      'M.P.T., Physical Therapy — University of South Alabama, 2001',
-      'B.S., Microbiology — Auburn University, 1998',
+      'M.P.T., Physical Therapy, University of South Alabama (2001)',
+      'B.S., Microbiology, Auburn University (1998)',
     ],
     personal:
       'In her free time, Cameron enjoys being with her husband Ben and their son Everett. They are avid sports fans, and you can usually find them at a nearby ball field.',

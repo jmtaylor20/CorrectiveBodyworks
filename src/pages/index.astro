@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import CTABanner from '../components/CTABanner.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 import Icon from '../components/Icon.astro';
+import BookButton from '../components/BookButton.astro';
 import { site } from '../data/site';
 import { services, differentiators } from '../data/services';
 import { team } from '../data/team';
@@ -22,7 +23,7 @@ const featured = services.slice(0, 6);
           from clinicians who look past the symptom to the imbalance underneath it.
         </p>
         <div class="btn-row hero__actions">
-          <a class="btn btn--primary" href="/contact/">{site.booking.label}</a>
+          <BookButton />
           <a class="btn btn--ghost" href="/services/">Explore Services</a>
         </div>
 
@@ -55,7 +56,7 @@ const featured = services.slice(0, 6);
         </p>
         <p>
           At Corrective Bodyworks we combine advanced hands-on treatment with corrective
-          exercise. The manual work brings relief quickly — the corrective work makes it
+          exercise. The manual work brings relief quickly. The corrective work makes it
           stick. That means evaluating how you actually move, treating what we find, and
           giving you the specific tools to keep the problem from coming back.
         </p>
