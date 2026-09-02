@@ -4,7 +4,7 @@
 import { readdirSync, statSync, readFileSync } from 'node:fs';
 import { join, extname } from 'node:path';
 
-const ROOTS = ['src', 'scripts'];
+const ROOTS = ['src', 'scripts', 'brand'];
 const FILES = ['README.md', 'astro.config.mjs', 'netlify.toml'];
 const EXT = new Set(['.astro', '.ts', '.js', '.mjs', '.css', '.md', '.html', '.toml', '.json']);
 const BAD = /[\u2014\u2013]/g;

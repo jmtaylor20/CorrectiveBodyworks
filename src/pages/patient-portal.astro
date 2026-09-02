@@ -76,17 +76,33 @@ const canDo = [
       <aside class="portal__aside reveal">
         <div class="pbox">
           <h2>Not set up yet?</h2>
+          {
+            registerUrl ? (
+              <p>
+                New patients can register directly through PT Everywhere. It takes a
+                couple of minutes and sets up your portal login at the same time.
+              </p>
+            ) : (
+              <p>
+                Portal accounts are created by the clinic, so there is nothing to sign
+                up for on your own. Once you are booked as a patient we will send an
+                invitation to your email address, and that link gets you started.
+              </p>
+            )
+          }
           <p>
-            Portal accounts are created by the clinic, so there is nothing to sign
-            up for on your own. Once you are booked as a patient we will send an
-            invitation to your email address, and that link gets you started.
-          </p>
-          <p>
-            If you have not received one, or you are not a patient yet, get in touch
-            and we will take care of it.
+            If you have not received an invitation, or you would rather talk to
+            someone first, get in touch and we will take care of it.
           </p>
           <div class="pbox__actions">
-            <a class="btn btn--primary" href={site.phoneHref}>
+            {
+              registerUrl && (
+                <a class="btn btn--primary" href={registerUrl} target="_blank" rel="noopener noreferrer">
+                  Register as a new patient
+                </a>
+              )
+            }
+            <a class:list={['btn', registerUrl ? 'btn--ghost' : 'btn--primary']} href={site.phoneHref}>
               <Icon name="phone" size={17} /> {site.phone}
             </a>
             <a class="btn btn--ghost" href="/contact/">Contact the clinic</a>

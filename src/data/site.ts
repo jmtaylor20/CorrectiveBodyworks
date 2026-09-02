@@ -80,13 +80,15 @@ export const nav = [
 ] as const;
 
 /**
- * Where the primary call to action points. Uses the PT Everywhere booking
- * link when one is configured, otherwise the contact form.
+ * Where the primary call to action points, in order of preference:
+ * a self-booking link, then new-patient registration, then the contact form.
+ * A new patient who cannot self-book should still land somewhere useful.
  */
-export const bookingHref = (): string => site.booking.url || '/contact/';
+export const bookingHref = (): string =>
+  site.booking.url || site.portal.registerUrl || '/contact/';
 
 /** True when the booking link leaves our domain and needs target/rel. */
-export const bookingIsExternal = (): boolean => /^https?:/i.test(site.booking.url);
+export const bookingIsExternal = (): boolean => /^https?:/i.test(bookingHref());
 
 /** Where patients sign in: the practice's own PT Everywhere page when it is
  *  configured, otherwise the generic PT Everywhere login. */
