@@ -50,7 +50,6 @@ or anything other than `"false"`:
 - [ ] Add staff headshots to `public/team/` and set the `photo` field in `src/data/team.ts`
 - [ ] Confirm clinic hours in `src/data/site.ts` (currently placeholder)
 - [ ] Confirm the public email address in `src/data/site.ts`
-- [ ] Add the PT Everywhere booking and portal URLs (see below)
 - [ ] Have a clinician review the FAQ answers on `/services/` for accuracy
 - [ ] Add social profile URLs in `src/data/site.ts` → `social`
 
@@ -80,6 +79,19 @@ public marketing site:
 
 What belongs on this site instead is a **link out** to the practice's own PT
 Everywhere patient booking and portal pages, which is the normal pattern.
+
+### Where these links live in the dashboard
+
+**Settings > Clinic Settings > Online Settings.**
+
+That page holds the self-registration link, the notification recipients for new
+self-registrations, and the Enable Patient Self-Scheduling toggle. The URL shown
+there matches the one wired into `src/data/site.ts`, so the dashboard is the
+place to confirm it after any change.
+
+PT Everywhere has not issued a separate branded patient sign-in URL. Existing
+patients sign in at the shared `app.pteverywhere.com`, which is what the site
+links to.
 
 ### Wiring it up
 
