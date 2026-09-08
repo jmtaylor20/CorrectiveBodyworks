@@ -76,10 +76,29 @@ const values = [
           the things you want to do, and stay there.
         </p>
         <p class="about__scripture">
-          The tree and cross in our logo reflect the faith and the sense of calling that
-          shape how we care for the people who walk through our door.
+          Our mark is a Tree of Andry, the old symbol of orthopedics: a young tree tied
+          to a post so it can grow straight. We put a Cross in the post's place.
         </p>
       </aside>
+    </div>
+  </section>
+
+  <section class="section section--deep mark">
+    <div class="wrap wrap-narrow">
+      <p class="eyebrow">The mark</p>
+      <blockquote class="mark__quote">
+        <p>
+          The tree, tied to the post, represents correcting deformities in order to
+          promote healthy growth. I believe that to truly accomplish this, our post
+          that provides the strength to correct, change, and grow us is the Cross. I
+          fully lean and depend on Christ as my source of strength, and the foundation
+          of my practice.
+        </p>
+        <footer>
+          <strong>Jeff Cotten</strong>
+          <span>Owner, Corrective Bodyworks</span>
+        </footer>
+      </blockquote>
     </div>
   </section>
 
@@ -142,6 +161,48 @@ const values = [
     border-top: 1px solid rgba(255, 255, 255, 0.16);
     font-style: italic;
     font-size: 0.95rem;
+  }
+
+  .mark {
+    text-align: center;
+  }
+
+  .mark .eyebrow {
+    justify-content: center;
+  }
+
+  .mark__quote {
+    margin: 0;
+  }
+
+  .mark__quote p {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.4vw, 2rem);
+    line-height: 1.35;
+    font-weight: 500;
+    color: #fff !important;
+    text-wrap: balance;
+  }
+
+  .mark__quote footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-top: 1.75rem;
+  }
+
+  .mark__quote strong {
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    color: #fff;
+  }
+
+  .mark__quote span {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--slate-300);
   }
 
   .vals-head {

@@ -74,6 +74,17 @@ import { site } from '../data/site';
               placeholder="Briefly, what's bothering you and how long has it been going on?"></textarea>
           </div>
 
+          <div class="consent">
+            <label class="consent__row">
+              <input type="checkbox" name="consent_contact" value="yes" required />
+              <span>
+                I agree that Corrective Bodyworks may contact me by phone, text, or
+                email about my request. Message and data rates may apply. Reply STOP
+                to opt out of texts at any time. <span aria-hidden="true">*</span>
+              </span>
+            </label>
+          </div>
+
           <button class="btn btn--primary" type="submit">Send message</button>
         </form>
       </div>
@@ -100,13 +111,17 @@ import { site } from '../data/site';
                 <a href={site.phoneHref}>{site.phone}</a>
               </div>
             </li>
-            <li>
-              <Icon name="check" size={21} />
-              <div>
-                <strong>Email</strong>
-                <a href={`mailto:${site.email}`}>{site.email}</a>
-              </div>
-            </li>
+            {
+              site.email && (
+                <li>
+                  <Icon name="check" size={21} />
+                  <div>
+                    <strong>Email</strong>
+                    <a href={`mailto:${site.email}`}>{site.email}</a>
+                  </div>
+                </li>
+              )
+            }
             <li>
               <Icon name="clock" size={21} />
               <div>
@@ -160,6 +175,31 @@ import { site } from '../data/site';
   .hp {
     position: absolute;
     left: -9999px;
+  }
+
+  .consent {
+    margin-bottom: 1.5rem;
+  }
+
+  .consent__row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.7rem;
+    align-items: start;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--text-muted);
+    line-height: 1.5;
+    cursor: pointer;
+  }
+
+  .consent__row input {
+    width: 1.05rem;
+    height: 1.05rem;
+    margin-top: 0.15rem;
+    accent-color: var(--navy-900);
   }
 
   .field {

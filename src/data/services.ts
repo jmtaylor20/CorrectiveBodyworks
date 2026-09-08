@@ -87,8 +87,8 @@ export const differentiators = [
     body: 'Relief matters, and we deliver it. But the real work is finding the imbalance that produced the pain and correcting it, so you are not back in six months with the same complaint.',
   },
   {
-    title: 'One clinician, start to finish',
-    body: 'You see the same licensed clinician every visit, not a rotating cast of aides. Your treatment is delivered by the person who evaluated you and knows your history.',
+    title: 'A small team that knows your case',
+    body: 'You are evaluated by a licensed physical therapist who builds your plan of care, and you work with the same familiar faces every visit rather than a rotating cast of aides.',
   },
   {
     title: 'Advanced manual therapy training',

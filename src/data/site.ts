@@ -12,7 +12,10 @@ export const site = {
 
   phone: '(334) 319-1684',
   phoneHref: 'tel:+13343191684',
-  email: 'info@correctivebodyworks.net',
+  // No published email yet. The only address on file is a personal Yahoo
+  // account, which does not belong on a clinic site. Set this once a domain
+  // mailbox exists; while it is empty the site simply omits the email.
+  email: '',
 
   address: {
     street: '17257 Highway 49 S',
@@ -31,9 +34,10 @@ export const site = {
     'https://www.google.com/maps?q=17257+Highway+49+S+Notasulga+AL+36866&output=embed',
 
   hours: [
-    { day: 'Monday to Thursday', time: '8:00 AM to 5:00 PM' },
-    { day: 'Friday', time: '8:00 AM to 12:00 PM' },
-    { day: 'Saturday to Sunday', time: 'Closed' },
+    { day: 'Monday and Wednesday', time: '7:30 AM to 4:30 PM' },
+    { day: 'Tuesday and Thursday', time: '9:00 AM to 6:00 PM' },
+    { day: 'Friday', time: '7:30 AM to 12:00 PM' },
+    { day: 'Saturday and Sunday', time: 'Closed' },
   ],
 
   // PT Everywhere.
