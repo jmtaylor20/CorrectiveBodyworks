@@ -1,5 +1,5 @@
 import pathlib, sys
-SP = pathlib.Path('/tmp/claude-0/-home-user-CorrectiveBodyworks/3751cb04-a410-5b87-a4c3-8d78e0f7a487/scratchpad/print')
+SP = pathlib.Path(__file__).resolve().parent
 FONTS = (SP / 'fonts.css').read_text()
 LOGO = (SP / 'logo.b64').read_text().strip()
 
@@ -305,3 +305,67 @@ flyer_body = """
 """ % {'logo': LOGO}
 
 write('physician-flyer.html', flyer_css, flyer_body)
+
+# --------------------------------------------------------------- cards
+LOGO_W = (SP / 'logo-white.b64').read_text().strip()
+
+# 3.5 x 2 in trim, plus .125 in bleed on every edge = 3.75 x 2.25 in.
+# Content sits .25 in inside the bleed edge, which is .125 in inside the trim.
+card_css = """
+@page{size:3.75in 2.25in;margin:0;}
+body{width:3.75in;}
+.card{width:3.75in;height:2.25in;padding:.28in .28in .28in .3in;position:relative;
+  overflow:hidden;display:flex;flex-direction:column;page-break-after:always;}
+.card:last-child{page-break-after:auto;}
+.face{background:#fff;}
+.face:before{content:'';position:absolute;left:0;top:0;bottom:0;width:.2in;
+  background:var(--navy);}
+.face img{width:1.42in;}
+.face .who{margin-top:auto;}
+.face .nm{font-family:var(--display);font-size:14pt;font-weight:600;
+  letter-spacing:.02em;color:var(--navy);line-height:1;}
+.face .cr{font-size:6.1pt;font-weight:700;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--slate);margin:.035in 0 .015in;}
+.face .ti{font-size:7.2pt;color:var(--muted);}
+.face .contact{display:flex;justify-content:space-between;align-items:flex-end;
+  gap:.12in;margin-top:.11in;padding-top:.075in;border-top:.75pt solid var(--mist);
+  font-size:6.5pt;line-height:1.5;color:var(--muted);}
+.face .contact b{display:block;color:var(--navy);font-size:7.4pt;font-weight:700;}
+.face .contact .r{text-align:right;}
+.back{background:var(--navy);align-items:center;justify-content:center;text-align:center;}
+.back img{width:1.85in;margin-bottom:.11in;}
+.back .tag{font-size:6.4pt;font-weight:700;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--mist);line-height:1.7;}
+.back .det{margin-top:.09in;font-size:6.9pt;line-height:1.55;color:#fff;}
+.tofill{color:#E8A08C;}
+"""
+
+def card(slug, name, creds, title, email):
+    body = """
+<div class="card face">
+  <img src="data:image/png;base64,%(logo)s" alt="">
+  <div class="who">
+    <div class="nm">%(name)s</div>
+    <div class="cr">%(creds)s</div>
+    <div class="ti">%(title)s</div>
+    <div class="contact">
+      <div><b>(334) 319-1684</b>Fax <span class="tofill">[FAX]</span></div>
+      <div class="r">%(email)s<br>17257 Highway 49 S<br>Notasulga, AL 36866</div>
+    </div>
+  </div>
+</div>
+
+<div class="card back">
+  <img src="data:image/png;base64,%(logow)s" alt="Corrective Bodyworks Rehabilitation and Wellness">
+  <div class="tag">Outpatient Orthopedics &nbsp;&middot;&nbsp; Manual Therapy<br>
+    Sports Medicine &nbsp;&middot;&nbsp; Dry Needling</div>
+  <div class="det">Notasulga, Alabama &nbsp;&middot;&nbsp; (334) 319-1684</div>
+</div>
+""" % {'logo': LOGO, 'logow': LOGO_W, 'name': name, 'creds': creds,
+       'title': title, 'email': email}
+    write('card-%s.html' % slug, card_css, body)
+
+card('jeff', 'Jeff Cotten', 'PTA, ATC, LMT, CIDN', 'Owner and Clinician',
+     'jeff@correctiverehab.com')
+card('cameron', 'Cameron Elliott', 'PT, MPT', 'Physical Therapist',
+     'cameron@correctiverehab.com')

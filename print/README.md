@@ -9,13 +9,29 @@ anywhere.
 | --- | --- | --- |
 | `referral-pad.pdf` | 5.5 x 8.5 in | Prescription pad. Print in pads of 50 or 100, glued at the top edge. |
 | `physician-flyer.pdf` | 8.5 x 11 in | Leave-behind one sheet for physician offices. |
+| `card-jeff.pdf` | 3.5 x 2 in trim | Business card. Page 1 front, page 2 back. |
+| `card-cameron.pdf` | 3.5 x 2 in trim | Same card for Cameron. |
 
-Both are exactly one page. Verified: content height matches page height, so
-neither spills a blank second sheet at the printer.
+The pad and flyer are exactly one page each. Verified: content height matches
+page height, so neither spills a blank second sheet at the printer. Each card
+file is two pages, front then back, which is what most printers expect.
+
+### Business card bleed
+
+The card PDFs are **3.75 x 2.25 in, which is 3.5 x 2 in trim plus .125 in of
+bleed on all four edges.** Tell the printer the artwork already includes bleed.
+There are no crop marks, which is what most online printers want; if yours asks
+for marks, say so and they can be added.
+
+All card content sits at least .155 in inside the trim line. The navy stripe on
+the front runs off the left edge on purpose: it is .2 in wide in the artwork so
+that .075 in of it survives after .125 in is cut away. Do not narrow it, or the
+cutter removes it entirely.
 
 ## Before printing
 
-Two placeholders are marked in red as `[FAX]` and must be replaced:
+The `[FAX]` placeholder is marked in red on all four pieces and must be
+replaced:
 
 - **Fax number.** A referral pad without a fax is close to useless, since fax is
   still how most physician offices send referrals. PT Everywhere has fax
@@ -40,10 +56,15 @@ stronger and worth adding.
 ## Regenerating
 
 ```
-python3 print/build.py            # writes the HTML
-node print/topdf.mjs print/referral-pad.html print/referral-pad.pdf 5.5in 8.5in
-node print/topdf.mjs print/physician-flyer.html print/physician-flyer.pdf 8.5in 11in
+python3 print/build.py     # writes every HTML file next to itself
+node print/topdf.mjs print/referral-pad.html     print/referral-pad.pdf     5.5in  8.5in
+node print/topdf.mjs print/physician-flyer.html  print/physician-flyer.pdf  8.5in  11in
+node print/topdf.mjs print/card-jeff.html        print/card-jeff.pdf        3.75in 2.25in
+node print/topdf.mjs print/card-cameron.html     print/card-cameron.pdf     3.75in 2.25in
 ```
+
+`topdf.mjs` needs playwright available. Verify page counts afterwards: the pad
+and flyer must be one page, each card two.
 
 `fonts.css` holds the base64 embedded font faces. Regenerate it only if the
 brand typefaces change.
