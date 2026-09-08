@@ -28,6 +28,27 @@ the front runs off the left edge on purpose: it is .2 in wide in the artwork so
 that .075 in of it survives after .125 in is cut away. Do not narrow it, or the
 cutter removes it entirely.
 
+## The official logo
+
+These pieces should carry the full lockup, the one that reads
+**CORRECTIVE BODYWORKS / REHABILITATION & WELLNESS**, rather than the two line
+mark used in the website header.
+
+To swap it in, drop two files into this folder and rebuild:
+
+- `logo-full.png`, the full lockup on transparency
+- `logo-full-white.png`, the same lockup knocked out to white, for the navy
+  card back
+
+`build.py` picks them up automatically when present and falls back to the two
+line mark when they are not, so nothing else needs editing. It also places the
+logo slightly narrower in that case, because the full lockup is three lines and
+stands taller at any given width. Those widths were fit tested against the real
+proportions: without the reduction the referral pad ran four pixels onto a
+second page.
+
+**Until those two files are added, the pieces carry the two line mark.**
+
 ## Before printing
 
 The `[FAX]` placeholder is marked in red on all four pieces and must be

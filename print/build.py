@@ -1,7 +1,30 @@
 import pathlib, sys
 SP = pathlib.Path(__file__).resolve().parent
 FONTS = (SP / 'fonts.css').read_text()
-LOGO = (SP / 'logo.b64').read_text().strip()
+
+
+def _logo(preferred, fallback):
+    """Official full lockup when it is present, otherwise the two line mark.
+
+    Drop the full 'CORRECTIVE BODYWORKS / REHABILITATION & WELLNESS' lockup in
+    as print/logo-full.png (and a white knockout as print/logo-full-white.png)
+    and every piece picks it up on the next build. Nothing else changes.
+    """
+    import base64
+    src = SP / preferred
+    if src.exists():
+        return base64.b64encode(src.read_bytes()).decode(), True
+    return (SP / fallback).read_text().strip(), False
+
+
+LOGO, LOGO_IS_FULL = _logo('logo-full.png', 'logo.b64')
+
+W = {
+    'PAD_LOGO_W':   '1.32in' if LOGO_IS_FULL else '1.62in',
+    'FLYER_LOGO_W': '2.15in' if LOGO_IS_FULL else '2.35in',
+    'CARD_LOGO_W':  '1.26in' if LOGO_IS_FULL else '1.42in',
+    'BACK_LOGO_W':  '1.62in' if LOGO_IS_FULL else '1.85in',
+}
 
 BASE = """
 %(fonts)s
@@ -20,6 +43,8 @@ html,body{background:#fff;color:var(--ink);font-family:var(--body);
 """
 
 def write(name, page_css, body):
+    for k, v in W.items():
+        page_css = page_css.replace(k, v)
     html = ("<!doctype html><meta charset='utf-8'><style>"
             + BASE % {'fonts': FONTS} + page_css + "</style>" + body)
     (SP / name).write_text(html)
@@ -31,7 +56,7 @@ pad_css = """
 body{width:5.5in;height:8.5in;padding:.32in .36in .24in;display:flex;flex-direction:column;}
 .head{display:flex;justify-content:space-between;align-items:flex-start;gap:.18in;
   border-bottom:2.5pt solid var(--navy);padding-bottom:.1in;}
-.head img{width:1.62in;}
+.head img{width:PAD_LOGO_W;}
 .head .npi{text-align:right;font-size:6.4pt;line-height:1.5;color:var(--muted);}
 .head .npi b{display:block;font-size:6.2pt;letter-spacing:.14em;
   text-transform:uppercase;color:var(--slate);}
@@ -170,7 +195,7 @@ flyer_css = """
 body{width:8.5in;height:11in;padding:.42in .5in .34in;display:flex;flex-direction:column;}
 .top{display:flex;justify-content:space-between;align-items:flex-start;
   border-bottom:3pt solid var(--navy);padding-bottom:.13in;}
-.top img{width:2.35in;}
+.top img{width:FLYER_LOGO_W;}
 .top .meta{text-align:right;font-size:7.4pt;line-height:1.55;color:var(--muted);}
 .top .meta b{display:block;font-size:6.6pt;letter-spacing:.15em;
   text-transform:uppercase;color:var(--slate);margin-bottom:.02in;}
@@ -307,7 +332,7 @@ flyer_body = """
 write('physician-flyer.html', flyer_css, flyer_body)
 
 # --------------------------------------------------------------- cards
-LOGO_W = (SP / 'logo-white.b64').read_text().strip()
+LOGO_W, _ = _logo('logo-full-white.png', 'logo-white.b64')
 
 # 3.5 x 2 in trim, plus .125 in bleed on every edge = 3.75 x 2.25 in.
 # Content sits .25 in inside the bleed edge, which is .125 in inside the trim.
@@ -320,7 +345,7 @@ body{width:3.75in;}
 .face{background:#fff;}
 .face:before{content:'';position:absolute;left:0;top:0;bottom:0;width:.2in;
   background:var(--navy);}
-.face img{width:1.42in;}
+.face img{width:CARD_LOGO_W;}
 .face .who{margin-top:auto;}
 .face .nm{font-family:var(--display);font-size:14pt;font-weight:600;
   letter-spacing:.02em;color:var(--navy);line-height:1;}
@@ -333,7 +358,7 @@ body{width:3.75in;}
 .face .contact b{display:block;color:var(--navy);font-size:7.4pt;font-weight:700;}
 .face .contact .r{text-align:right;}
 .back{background:var(--navy);align-items:center;justify-content:center;text-align:center;}
-.back img{width:1.85in;margin-bottom:.11in;}
+.back img{width:BACK_LOGO_W;margin-bottom:.11in;}
 .back .tag{font-size:6.4pt;font-weight:700;letter-spacing:.15em;
   text-transform:uppercase;color:var(--mist);line-height:1.7;}
 .back .det{margin-top:.09in;font-size:6.9pt;line-height:1.55;color:#fff;}
