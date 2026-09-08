@@ -12,6 +12,7 @@ export const site = {
 
   phone: '(334) 319-1684',
   phoneHref: 'tel:+13343191684',
+  fax: '(334) 625-6578',
   email: 'jeff@correctiverehab.com',
 
   address: {

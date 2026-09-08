@@ -111,6 +111,13 @@ import { site } from '../data/site';
                 <a href={site.phoneHref}>{site.phone}</a>
               </div>
             </li>
+            <li>
+              <Icon name="check" size={21} />
+              <div>
+                <strong>Fax</strong>
+                <span class="cbox__plain">{site.fax}</span>
+              </div>
+            </li>
             {
               site.email && (
                 <li>
@@ -313,6 +320,10 @@ import { site } from '../data/site';
 
   .cbox__list a:hover {
     color: var(--slate-600);
+  }
+
+  .cbox__plain {
+    color: var(--text);
   }
 
   .cbox__hours {

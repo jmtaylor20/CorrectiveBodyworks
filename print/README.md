@@ -51,12 +51,8 @@ second page.
 
 ## Before printing
 
-The `[FAX]` placeholder is marked in red on all four pieces and must be
-replaced:
-
-- **Fax number.** A referral pad without a fax is close to useless, since fax is
-  still how most physician offices send referrals. PT Everywhere has fax
-  management built in, so there may already be a number on the account.
+Fax is **(334) 625-6578**, set on all four pieces. It appears prominently on the
+referral pad, since fax is how most physician offices will actually send one.
 
 There is deliberately **no website address** on either piece. correctiverehab.com
 currently serves an under construction placeholder, and sending a physician to a

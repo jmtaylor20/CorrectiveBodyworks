@@ -92,7 +92,6 @@ h1{font-family:var(--display);font-size:17pt;font-weight:600;letter-spacing:.03e
 .foot .addr{font-size:6.6pt;line-height:1.45;color:var(--muted);}
 .foot .addr b{color:var(--navy);}
 .foot .send{text-align:right;font-size:6.6pt;line-height:1.45;color:var(--muted);}
-.tofill{color:#C0392B;}
 """
 
 pad_body = """
@@ -178,10 +177,11 @@ pad_body = """
   <div class="addr">
     <b>Corrective Bodyworks Rehabilitation &amp; Wellness</b><br>
     17257 Highway 49 South, Notasulga, AL 36866<br>
-    Phone (334) 319-1684 &nbsp;|&nbsp; Fax <span class="tofill">[FAX]</span>
+    Phone (334) 319-1684 &nbsp;|&nbsp; Fax (334) 625-6578
   </div>
   <div class="send">
-    Fax this form, or send it with your patient.<br>
+    <b style="color:var(--navy);font-size:7.6pt">Fax to (334) 625-6578</b>
+    or send this form with your patient.<br>
     We contact every referral within one business day.
   </div>
 </div>
@@ -239,7 +239,6 @@ li:before{content:'';position:absolute;left:0;top:.055in;width:.055in;height:.05
 .foot .cta{text-align:right;font-size:8.6pt;line-height:1.5;color:var(--muted);}
 .foot .cta b{display:block;font-family:var(--display);font-size:15pt;
   letter-spacing:.03em;text-transform:uppercase;color:var(--navy);}
-.tofill{color:#C0392B;}
 """
 
 flyer_body = """
@@ -316,7 +315,7 @@ flyer_body = """
     United Healthcare, workers compensation, and self pay.</p></div>
   <div><b>Hours</b><p>Mon and Wed 7:30 to 4:30<br>Tue and Thu 9:00 to 6:00<br>
     Fri 7:30 to 12:00</p></div>
-  <div><b>How to refer</b><p>Fax the referral form, call the clinic, or send your
+  <div><b>How to refer</b><p>Fax to (334) 625-6578, call the clinic, or send your
     patient with a referral slip from our pad.</p></div>
 </div>
 
@@ -325,7 +324,7 @@ flyer_body = """
     17257 Highway 49 South, Notasulga, AL 36866<br>
     jeff@correctiverehab.com</div>
   <div class="cta">Referrals and questions<br><b>(334) 319-1684</b>
-    Fax <span class="tofill">[FAX]</span></div>
+    Fax (334) 625-6578</div>
 </div>
 """ % {'logo': LOGO}
 
@@ -362,7 +361,6 @@ body{width:3.75in;}
 .back .tag{font-size:6.4pt;font-weight:700;letter-spacing:.15em;
   text-transform:uppercase;color:var(--mist);line-height:1.7;}
 .back .det{margin-top:.09in;font-size:6.9pt;line-height:1.55;color:#fff;}
-.tofill{color:#E8A08C;}
 """
 
 def card(slug, name, creds, title, email):
@@ -374,7 +372,7 @@ def card(slug, name, creds, title, email):
     <div class="cr">%(creds)s</div>
     <div class="ti">%(title)s</div>
     <div class="contact">
-      <div><b>(334) 319-1684</b>Fax <span class="tofill">[FAX]</span></div>
+      <div><b>(334) 319-1684</b>Fax (334) 625-6578</div>
       <div class="r">%(email)s<br>17257 Highway 49 S<br>Notasulga, AL 36866</div>
     </div>
   </div>
