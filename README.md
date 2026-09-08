@@ -48,8 +48,6 @@ or anything other than `"false"`:
 ## Still to do before launch
 
 - [ ] Add staff headshots to `public/team/` and set the `photo` field in `src/data/team.ts`
-- [ ] Confirm clinic hours in `src/data/site.ts` (currently placeholder)
-- [ ] Confirm the public email address in `src/data/site.ts`
 - [ ] Have a clinician review the FAQ answers on `/services/` for accuracy
 - [ ] Add social profile URLs in `src/data/site.ts` → `social`
 

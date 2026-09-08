@@ -12,10 +12,7 @@ export const site = {
 
   phone: '(334) 319-1684',
   phoneHref: 'tel:+13343191684',
-  // No published email yet. The only address on file is a personal Yahoo
-  // account, which does not belong on a clinic site. Set this once a domain
-  // mailbox exists; while it is empty the site simply omits the email.
-  email: '',
+  email: 'jeff@correctiverehab.com',
 
   address: {
     street: '17257 Highway 49 S',
