@@ -34,20 +34,32 @@ These pieces should carry the full lockup, the one that reads
 **CORRECTIVE BODYWORKS / REHABILITATION & WELLNESS**, rather than the two line
 mark used in the website header.
 
-To swap it in, drop two files into this folder and rebuild:
+`logo-full.png` and `logo-full-white.png` are in this folder and every piece
+uses them. The source arrived with a clean alpha channel, so it is used as
+delivered rather than re-keyed; the ink samples as exactly `#011B3A` and
+`#4C647A`.
 
-- `logo-full.png`, the full lockup on transparency
-- `logo-full-white.png`, the same lockup knocked out to white, for the navy
-  card back
+`build.py` places the logo narrower when the full lockup is present, because it
+is three lines and stands taller at any given width. Without that reduction the
+referral pad ran four pixels onto a second page.
 
-`build.py` picks them up automatically when present and falls back to the two
-line mark when they are not, so nothing else needs editing. It also places the
-logo slightly narrower in that case, because the full lockup is three lines and
-stands taller at any given width. Those widths were fit tested against the real
-proportions: without the reduction the referral pad ran four pixels onto a
-second page.
+### Tagline size
 
-**Until those two files are added, the pieces carry the two line mark.**
+The REHABILITATION & WELLNESS line is 13 percent of the lockup's height, so at
+the placed widths it renders at roughly:
+
+| Piece | Placed width | Tagline cap height |
+| --- | --- | --- |
+| Physician flyer | 2.15 in | 8.6 pt |
+| Referral pad | 1.32 in | 5.3 pt |
+| Business card | 1.26 in | 5.0 pt |
+
+Five points is small but normal for a logo tagline, which registers as part of
+the mark rather than being read. On the pad the full clinic name also appears
+in the footer at a readable size. On the business card it does not, so if that
+line matters there, either enlarge the card logo (which tightens the gap above
+the name) or use the two line mark on cards only by removing the two logo-full
+files and rebuilding.
 
 ## Before printing
 
@@ -88,7 +100,11 @@ brand typefaces change.
 
 ## Printing notes
 
-Both are designed for standard digital printing with no bleed: all content sits
-within a safe margin, and there is no artwork running to the paper edge. That
-keeps cost down and lets a local shop or an online printer handle it without
-special setup. Two ink colors plus black on white stock.
+The pad and flyer are designed for standard digital printing with no bleed: all
+content sits within a safe margin and no artwork runs to the paper edge. That
+keeps cost down and lets a local shop or an online printer handle them without
+special setup. The business cards do use bleed, as described above.
+
+The PDFs are RGB, which every digital printer accepts. If a shop asks for CMYK
+they can convert on their end; expect the navy to shift very slightly, which is
+normal and will be consistent across all four pieces.
