@@ -66,10 +66,12 @@ files and rebuilding.
 Fax is **(334) 625-6578**, set on all four pieces. It appears prominently on the
 referral pad, since fax is how most physician offices will actually send one.
 
-There is deliberately **no website address** on either piece. correctiverehab.com
-currently serves an under construction placeholder, and sending a physician to a
-dead page is worse than omitting the URL. Add it once the site is live, which
-means a reprint, so consider printing a smaller first run.
+**The business cards carry correctiverehab.com. The referral pad and flyer do
+not.** That domain currently serves an under construction placeholder, so
+anyone typing it in today reaches a dead page. Cards get handed out over
+months and the site should be live well within that window, so the risk is
+small there. The pad and flyer are more time sensitive and can have the
+address added at the next revision, once the site is up.
 
 ## Claims that need Jeff's sign off
 

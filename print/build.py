@@ -61,32 +61,38 @@ body{width:5.5in;height:8.5in;padding:.32in .36in .24in;display:flex;flex-direct
 .head .npi b{display:block;font-size:6.2pt;letter-spacing:.14em;
   text-transform:uppercase;color:var(--slate);}
 h1{font-family:var(--display);font-size:17pt;font-weight:600;letter-spacing:.03em;
-  text-transform:uppercase;color:var(--navy);margin:.13in 0 .02in;line-height:1;}
-.sub{font-size:7pt;color:var(--muted);margin-bottom:.11in;}
-.grp{margin-bottom:.115in;}
-.grp>.eyebrow{display:block;margin-bottom:.055in;}
+  text-transform:uppercase;color:var(--navy);margin:.1in 0 .02in;line-height:1;}
+.sub{font-size:7pt;color:var(--muted);margin-bottom:.09in;}
+.grp{margin-bottom:.085in;}
+.grp>.eyebrow{display:block;margin-bottom:.045in;}
 .row{display:flex;gap:.15in;}
 .f{flex:1;min-width:0;}
 .f label{display:block;font-size:6.3pt;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:.055in;}
-.line{border-bottom:.75pt solid var(--rule);height:.19in;}
-.line.tall{height:.3in;}
+  color:var(--muted);margin-bottom:.04in;}
+.line{border-bottom:.75pt solid var(--rule);height:.15in;}
+.line.tall{height:.25in;}
 .box{border:.75pt solid var(--rule);height:.42in;}
 .checks{display:flex;flex-wrap:wrap;gap:.05in .16in;font-size:7.4pt;color:var(--ink);}
 .ck{display:flex;align-items:center;gap:.045in;}
 .ck i{width:.105in;height:.105in;border:.9pt solid var(--navy);display:inline-block;}
 .orders{background:#F4F6F8;border-left:2.5pt solid var(--slate);
-  padding:.09in .11in;margin-bottom:.115in;}
-.freq{display:flex;align-items:baseline;gap:.05in;font-size:7.6pt;margin-top:.07in;}
-.freq .in{border-bottom:.75pt solid var(--rule);width:.42in;display:inline-block;height:.14in;}
-.clin{margin-top:auto;background:#F4F6F8;padding:.085in .11in;margin-bottom:.11in;}
+  padding:.08in .1in;margin-bottom:.085in;}
+.orow{display:flex;align-items:center;flex-wrap:wrap;gap:.04in .13in;
+  font-size:7.4pt;margin-top:.06in;}
+.olab{font-size:6.3pt;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);width:1.2in;flex:none;}
+.ounit{font-size:6.9pt;color:var(--muted);}
+.dateline{border-bottom:.75pt solid var(--rule);flex:1;min-width:1.2in;height:.15in;}
+.clin{margin-top:auto;background:#F4F6F8;padding:.07in .1in;margin-bottom:.085in;}
 .clin .who{display:flex;gap:.2in;margin-top:.05in;}
 .clin .who div{font-size:7.2pt;line-height:1.35;}
 .clin .who b{color:var(--navy);}
 .clin .who span{display:block;font-size:6.4pt;color:var(--muted);
   letter-spacing:.06em;text-transform:uppercase;}
-.clin .tech{font-size:6.6pt;color:var(--muted);margin-top:.06in;line-height:1.4;}
-.sig{border-top:.75pt solid var(--rule);padding-top:.1in;}
+.clin .tech{font-size:6.5pt;color:var(--muted);margin-top:.06in;line-height:1.4;}
+.clin .tech b{font-size:6.1pt;letter-spacing:.11em;text-transform:uppercase;
+  color:var(--slate);margin-right:.04in;}
+.sig{border-top:.75pt solid var(--rule);padding-top:.08in;}
 .foot{margin-top:.1in;border-top:2.5pt solid var(--navy);padding-top:.07in;
   display:flex;justify-content:space-between;align-items:flex-end;gap:.12in;}
 .foot .addr{font-size:6.6pt;line-height:1.45;color:var(--muted);}
@@ -139,26 +145,46 @@ pad_body = """
     <span class="ck"><i></i><b>Evaluate and treat</b></span>
     <span class="ck"><i></i>Post-op protocol attached</span>
   </div>
-  <div class="freq">
-    <span></span><span class="in"></span> visits per week for
-    <span class="in"></span> weeks
-    &nbsp;&nbsp;&nbsp; Re-evaluate in <span class="in"></span> weeks
+  <div class="orow">
+    <span class="olab">Frequency</span>
+    <span class="ck"><i></i>1x</span><span class="ck"><i></i>2x</span>
+    <span class="ck"><i></i>3x</span><span class="ck"><i></i>4x</span>
+    <span class="ounit">per week</span>
+  </div>
+  <div class="orow">
+    <span class="olab">Duration</span>
+    <span class="ck"><i></i>2</span><span class="ck"><i></i>4</span>
+    <span class="ck"><i></i>6</span><span class="ck"><i></i>8</span>
+    <span class="ck"><i></i>12</span>
+    <span class="ounit">weeks</span>
+  </div>
+  <div class="orow">
+    <span class="olab">Return to physician</span>
+    <span class="dateline"></span>
   </div>
 </div>
 
 <div class="grp">
-  <div class="f"><label>Precautions, weight bearing status, or restrictions</label>
-  <div class="box"></div></div>
+  <span class="eyebrow">Precautions and weight bearing</span>
+  <div class="checks" style="margin:.055in 0 .06in">
+    <span class="ck"><i></i>None</span><span class="ck"><i></i>WBAT</span>
+    <span class="ck"><i></i>PWB</span><span class="ck"><i></i>NWB</span>
+    <span class="ck"><i></i>TTWB</span><span class="ck"><i></i>Per protocol</span>
+  </div>
+  <div class="row">
+    <div class="f"><label>Other restrictions</label><div class="line"></div></div>
+  </div>
 </div>
 
 <div class="clin">
   <span class="eyebrow">Treating clinicians</span>
   <div class="who">
     <div><b>Cameron Elliott, PT, MPT</b><span>Physical Therapist</span></div>
-    <div><b>Jeff Cotten, PTA, ATC, LMT</b><span>Physical Therapist Assistant</span></div>
+    <div><b>Jeff Cotten, PTA, ATC, LMT, CIDN</b><span>Physical Therapist Assistant</span></div>
   </div>
-  <div class="tech">Integrative dry needling (CIDN), Active Release Techniques,
-    Primal Reflex Release, Fascial Manipulation, orthotic intervention.</div>
+  <div class="tech"><b>Services</b> Post-operative rehabilitation, outpatient
+    orthopedics, sports injury, work injury and return to work, balance and fall
+    prevention, orthopedic manual therapy, dry needling, orthotic assessment.</div>
 </div>
 
 <div class="sig">
@@ -278,7 +304,7 @@ flyer_body = """
       <li>Fascial Manipulation</li>
       <li>Manual and soft tissue therapy</li>
       <li>Corrective exercise programming</li>
-      <li>Custom orthotic assessment</li>
+      <li>Orthotic assessment</li>
     </ul>
   </div>
 </div>
@@ -290,8 +316,8 @@ flyer_body = """
       and work to see new patients quickly, so your patient does not wait weeks
       to start.</p></div>
     <div><b>Real hands-on time</b><p>Seventy-five minutes for an evaluation and
-      forty-five for follow-ups, delivered by a licensed clinician rather than
-      handed off to aides.</p></div>
+      forty-five for follow-ups, delivered one on one by a licensed
+      clinician.</p></div>
     <div><b>You stay informed</b><p>You receive the evaluation, the plan of care,
       and progress updates. Your patient comes back to you, not to someone else.</p></div>
   </div>
@@ -311,8 +337,8 @@ flyer_body = """
 </div>
 
 <div class="strip">
-  <div><b>Insurance</b><p>Blue Cross Blue Shield, Tricare, Medicaid, Humana,
-    United Healthcare, workers compensation, and self pay.</p></div>
+  <div><b>Insurance</b><p>All major insurances accepted, including workers
+    compensation. Please call to confirm your patient's coverage.</p></div>
   <div><b>Hours</b><p>Mon and Wed 7:30 to 4:30<br>Tue and Thu 9:00 to 6:00<br>
     Fri 7:30 to 12:00</p></div>
   <div><b>How to refer</b><p>Fax to (334) 625-6578, call the clinic, or send your
@@ -373,7 +399,7 @@ def card(slug, name, creds, title, email):
     <div class="ti">%(title)s</div>
     <div class="contact">
       <div><b>(334) 319-1684</b>Fax (334) 625-6578</div>
-      <div class="r">%(email)s<br>17257 Highway 49 S<br>Notasulga, AL 36866</div>
+      <div class="r">%(email)s<br>correctiverehab.com<br>17257 Highway 49 S, Notasulga, AL 36866</div>
     </div>
   </div>
 </div>
@@ -382,7 +408,7 @@ def card(slug, name, creds, title, email):
   <img src="data:image/png;base64,%(logow)s" alt="Corrective Bodyworks Rehabilitation and Wellness">
   <div class="tag">Outpatient Orthopedics &nbsp;&middot;&nbsp; Manual Therapy<br>
     Sports Medicine &nbsp;&middot;&nbsp; Dry Needling</div>
-  <div class="det">Notasulga, Alabama &nbsp;&middot;&nbsp; (334) 319-1684</div>
+  <div class="det">correctiverehab.com<br>Notasulga, Alabama &nbsp;&middot;&nbsp; (334) 319-1684</div>
 </div>
 """ % {'logo': LOGO, 'logow': LOGO_W, 'name': name, 'creds': creds,
        'title': title, 'email': email}
