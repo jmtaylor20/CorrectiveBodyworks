@@ -338,8 +338,8 @@ flyer_body = """
 <div class="strip">
   <div><b>Insurance</b><p>All major insurances accepted, including workers
     compensation. Please call to confirm your patient's coverage.</p></div>
-  <div><b>Hours</b><p>Mon and Wed 7:30 to 4:30<br>Tue and Thu 9:00 to 6:00<br>
-    Fri 7:30 to 12:00</p></div>
+  <div><b>Hours</b><p>Flexible hours to accommodate busy schedules, including
+    early morning and evening appointments.</p></div>
   <div><b>How to refer</b><p>Fax to (334) 625-6578, call the clinic, or send your
     patient with a referral slip from our pad.</p></div>
 </div>
