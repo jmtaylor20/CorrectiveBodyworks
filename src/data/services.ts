@@ -13,7 +13,7 @@ export const services: Service[] = [
     summary:
       'Individualized outpatient rehabilitation for injuries, post-operative recovery, and chronic orthopedic pain.',
     detail:
-      'Every plan of care starts with a thorough evaluation of how you actually move. From there we build a progressive program of hands-on treatment and targeted exercise designed to restore strength, mobility, and confidence in the affected area, and to keep the problem from returning.',
+      'Every plan of care starts with a thorough evaluation of how you actually move. From there we build a progressive program of hands-on treatment and targeted exercise designed to restore strength, mobility, and confidence in the affected area, and to address what allowed the problem to develop.',
     icon: 'activity',
   },
   {

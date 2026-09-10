@@ -23,7 +23,7 @@ export const team: TeamMember[] = [
       'Nearly 30 years of hands-on experience, focused on finding and correcting the imbalance behind the pain, not just treating the symptom.',
     bio: [
       'Jeff Cotten is a Physical Therapist Assistant, Certified Athletic Trainer, Corrective Exercise Specialist, and Licensed Massage Therapist with nearly 30 years of experience across a wide range of clinical settings. His practice centers on outpatient orthopedic physical therapy, manual therapy, and sports medicine.',
-      'Jeff has invested heavily in advanced manual therapy training, holding certifications in Integrative Dry Needling, Active Release Techniques, Primal Reflex Release Techniques, and Fascial Manipulation. He uses those tools to bring real relief and restore function, but his larger goal is always to correct the underlying musculoskeletal imbalances that caused the problem, so pain and dysfunction do not come back.',
+      'Jeff has invested heavily in advanced manual therapy training, holding certifications in Integrative Dry Needling, Active Release Techniques, Primal Reflex Release Techniques, and Fascial Manipulation. He uses those tools to bring real relief and restore function, but his larger goal is always to correct the underlying musculoskeletal imbalances that caused the problem, with the aim of reducing the chance that pain and dysfunction return.',
       'He works with patients of every kind: adult and youth athletes, people rehabilitating an injury, and the "industrial athletes" whose work puts hard demands on their bodies. Jeff has a particular interest in runners and in orthotic intervention, and he takes real satisfaction in helping people get back to work and back to enjoying life.',
     ],
     certifications: [

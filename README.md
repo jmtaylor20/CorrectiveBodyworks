@@ -48,9 +48,26 @@ or anything other than `"false"`:
 ## Still to do before launch
 
 - [ ] Add staff headshots to `public/team/` and set the `photo` field in `src/data/team.ts`
+- [ ] Decide on the homepage headline, see Words never to use above
 - [ ] Have a clinician review the FAQ answers on `/services/` for accuracy
 - [ ] Add social profile URLs in `src/data/site.ts` → `social`
 
+
+## Words never to use
+
+Two rules from the practice, and they apply to the website, print, and ads:
+
+- Never the word **cure**.
+- Never **promise a specified outcome**. Describe what we do and what we aim
+  for, never what will happen. "Designed to reduce the chance it returns" is
+  fine. "So the pain does not come back" is not.
+
+`npm run check:dashes` does not catch these, so they need a read rather than a
+script. The obvious phrasings to watch are guarantee, pain free, eliminate,
+will fix, and any sentence promising the patient a result.
+
+Still open: the homepage headline reads "Relief today. Correction that lasts."
+That is arguably a promised outcome and needs a decision.
 
 ## Writing style
 
