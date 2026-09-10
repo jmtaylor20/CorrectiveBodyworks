@@ -190,8 +190,7 @@ pad_body = """
 <div class="sig">
   <span class="eyebrow" style="display:block;margin-bottom:.06in">Referring provider</span>
   <div class="row">
-    <div class="f" style="flex:2"><label>Name</label><div class="line"></div></div>
-    <div class="f"><label>NPI</label><div class="line"></div></div>
+    <div class="f"><label>Name</label><div class="line"></div></div>
   </div>
   <div class="row" style="margin-top:.075in">
     <div class="f" style="flex:2"><label>Signature</label><div class="line tall"></div></div>
