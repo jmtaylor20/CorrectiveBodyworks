@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import Icon from '../components/Icon.astro';
+import Directions from '../components/Directions.astro';
 import { site } from '../data/site';
 ---
 
@@ -38,6 +39,7 @@ import { site } from '../data/site';
           action="/thank-you/"
         >
           <input type="hidden" name="form-name" value="appointment" />
+          <input type="hidden" name="source" value="Contact page" />
           <p class="hp">
             <label>Do not fill this out: <input name="company" /></label>
           </p>
@@ -143,14 +145,7 @@ import { site } from '../data/site';
           </a>
         </div>
 
-        <div class="contact__map">
-          <iframe
-            src={site.mapsEmbedUrl}
-            title="Map to Corrective Bodyworks"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            allowfullscreen></iframe>
-        </div>
+        <Directions />
       </aside>
     </div>
   </section>
@@ -232,7 +227,9 @@ import { site } from '../data/site';
     color: var(--slate-600);
   }
 
-  label span {
+  /* Only the required marker, not every span inside a label. The consent
+     sentence is wrapped in a span and was picking this up. */
+  label span[aria-hidden='true'] {
     color: #b4472f;
   }
 
@@ -334,19 +331,6 @@ import { site } from '../data/site';
   .cbox__call {
     width: 100%;
     margin-top: 1.75rem;
-  }
-
-  .contact__map {
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    box-shadow: var(--shadow-sm);
-    aspect-ratio: 4 / 3;
-  }
-
-  .contact__map iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
   }
 
   @media (max-width: 900px) {

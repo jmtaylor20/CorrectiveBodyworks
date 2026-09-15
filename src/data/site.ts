@@ -8,7 +8,7 @@ export const site = {
   legalName: 'Corrective Bodyworks, LLC',
   tagline: 'Rehabilitation & Wellness',
   description:
-    'Outpatient orthopedic physical therapy, manual therapy, and sports medicine in Notasulga, Alabama. Personalized, hands-on care that relieves pain, restores function, and corrects the imbalances behind it.',
+    'Outpatient orthopedic physical therapy, manual therapy and sports medicine in Notasulga, Alabama. Hands-on care that treats the cause, not just the symptom.',
 
   phone: '(334) 319-1684',
   phoneHref: 'tel:+13343191684',
@@ -28,8 +28,10 @@ export const site = {
   // Google Maps deep link, works without an API key.
   mapsUrl:
     'https://www.google.com/maps/search/?api=1&query=17257+Highway+49+S+Notasulga+AL+36866',
-  mapsEmbedUrl:
-    'https://www.google.com/maps?q=17257+Highway+49+S+Notasulga+AL+36866&output=embed',
+  mapsDirections:
+    'https://www.google.com/maps/dir/?api=1&destination=17257+Highway+49+S+Notasulga+AL+36866',
+  appleMaps:
+    'https://maps.apple.com/?daddr=17257+Highway+49+S,+Notasulga,+AL+36866',
 
   hours: [
     { day: 'Monday and Wednesday', time: '7:30 AM to 4:30 PM' },

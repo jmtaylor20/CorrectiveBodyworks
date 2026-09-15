@@ -1,0 +1,66 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+
+interface Props {
+  /** "panel" sits in a tinted card, "plain" drops straight onto the page. */
+  tone?: 'plain' | 'panel';
+}
+const { tone = 'panel' } = Astro.props;
+---
+
+<div class:list={['dir', `dir--${tone}`]}>
+  <p class="eyebrow">Getting here</p>
+  <p class="dir__note">
+    The clinic is on Highway 49 South in Notasulga. Open the address in your maps
+    app for turn by turn directions from wherever you are.
+  </p>
+  <div class="btn-row dir__actions">
+    <a
+      class="btn btn--primary"
+      href={site.mapsDirections}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <Icon name="pin" size={17} /> Get directions
+    </a>
+    <a
+      class="btn btn--ghost"
+      href={site.appleMaps}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Apple Maps
+    </a>
+  </div>
+</div>
+
+<style>
+  /* Follows a block of content rather than sitting in its own card, so it
+     supplies its own separation. */
+  .dir--plain {
+    margin-top: 2.5rem;
+  }
+
+  .dir--panel {
+    background: var(--bg-alt);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .dir__note {
+    margin-top: 0.9rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    max-width: 42ch;
+  }
+
+  /* Two equal buttons where there is room, stacked full width where there is
+     not. Overrides .btn-row's flex layout so the pair never sits ragged. */
+  .dir__actions {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+    gap: 0.75rem;
+  }
+</style>
