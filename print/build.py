@@ -276,9 +276,8 @@ flyer_body = """
 <h1>Outpatient orthopedic PT,<br><em>one patient at a time.</em></h1>
 <p class="lede">
   A new outpatient clinic in Notasulga built around unhurried, hands-on care.
-  Seventy-five minute evaluations, forty-five minute follow-ups, and four
-  treatment rooms, so your patient is seen promptly and treated by the same
-  clinician each visit.
+  Four treatment rooms and a deliberately manageable caseload, so your patient
+  is seen promptly and treated by the same clinician at every visit.
 </p>
 
 <div class="split">
@@ -314,9 +313,9 @@ flyer_body = """
     <div><b>Prompt access</b><p>We contact every referral within one business day
       and work to see new patients quickly, so your patient does not wait weeks
       to start.</p></div>
-    <div><b>Real hands-on time</b><p>Seventy-five minutes for an evaluation and
-      forty-five for follow-ups, delivered one on one by a licensed
-      clinician.</p></div>
+    <div><b>Real hands-on time</b><p>Unhurried appointments delivered one on one
+      by a licensed clinician, with time to assess properly and adjust the plan
+      as your patient progresses.</p></div>
     <div><b>You stay informed</b><p>You receive the evaluation, the plan of care,
       and progress updates. Your patient comes back to you, not to someone else.</p></div>
   </div>
@@ -329,7 +328,7 @@ flyer_body = """
       M.P.T., University of South Alabama. B.S. Microbiology, Auburn University.</p>
   </div>
   <div>
-    <b>Jeff Cotten, PTA, ATC, LMT</b><span>Physical Therapist Assistant</span>
+    <b>Jeff Cotten, PTA, ATC, LMT, CIDN</b><span>Physical Therapist Assistant</span>
     <p>Nearly 30 years across outpatient orthopedics, manual therapy and sports
       medicine. Certified athletic trainer, licensed massage therapist, CIDN, ART.</p>
   </div>
