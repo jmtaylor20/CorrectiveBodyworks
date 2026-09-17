@@ -10,8 +10,10 @@ export const site = {
   description:
     'Outpatient orthopedic physical therapy, manual therapy and sports medicine in Notasulga, Alabama. Hands-on care that treats the cause, not just the symptom.',
 
-  phone: '(334) 319-1684',
-  phoneHref: 'tel:+13343191684',
+  phone: '(334) 600-2362',
+  phoneHref: 'tel:+13346002362',
+  tollFree: '(888) 343-5314',
+  tollFreeHref: 'tel:+18883435314',
   fax: '(334) 625-6578',
   email: 'jeff@correctiverehab.com',
 

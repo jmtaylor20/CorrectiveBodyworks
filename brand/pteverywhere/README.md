@@ -82,7 +82,7 @@ Keep it short. Patients read this once, while trying to get somewhere else.
 > the exercise program your therapist assigned you, and your billing. You can
 > also message us directly with any question between visits.
 >
-> If you have any trouble getting in, call the clinic at (334) 319-1684 and we
+> If you have any trouble getting in, call the clinic at (334) 600-2362 and we
 > will sort it out.
 
 Adjust the phone number here if it ever changes. It also lives in

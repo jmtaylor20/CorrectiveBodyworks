@@ -95,7 +95,7 @@ h1{font-family:var(--display);font-size:17pt;font-weight:600;letter-spacing:.03e
 .sig{border-top:.75pt solid var(--rule);padding-top:.08in;}
 .foot{margin-top:.1in;border-top:2.5pt solid var(--navy);padding-top:.07in;
   display:flex;justify-content:space-between;align-items:flex-end;gap:.12in;}
-.foot .addr{font-size:6.6pt;line-height:1.45;color:var(--muted);}
+.foot .addr{font-size:6.6pt;line-height:1.45;color:var(--muted);white-space:nowrap;flex:none;}
 .foot .addr b{color:var(--navy);}
 .foot .send{text-align:right;font-size:6.6pt;line-height:1.45;color:var(--muted);}
 """
@@ -202,7 +202,8 @@ pad_body = """
   <div class="addr">
     <b>Corrective Bodyworks Rehabilitation &amp; Wellness</b><br>
     17257 Highway 49 South, Notasulga, AL 36866<br>
-    Phone (334) 319-1684 &nbsp;|&nbsp; Fax (334) 625-6578
+    Phone (334) 600-2362 &nbsp;|&nbsp; Toll free (888) 343-5314<br>
+    Fax (334) 625-6578
   </div>
   <div class="send">
     <b style="color:var(--navy);font-size:7.6pt">Fax to (334) 625-6578</b>
@@ -347,8 +348,8 @@ flyer_body = """
   <div class="a"><b>Corrective Bodyworks Rehabilitation &amp; Wellness</b>
     17257 Highway 49 South, Notasulga, AL 36866<br>
     jeff@correctiverehab.com</div>
-  <div class="cta">Referrals and questions<br><b>(334) 319-1684</b>
-    Fax (334) 625-6578</div>
+  <div class="cta">Referrals and questions<br><b>(334) 600-2362</b>
+    Toll free (888) 343-5314 &nbsp;|&nbsp; Fax (334) 625-6578</div>
 </div>
 """ % {'logo': LOGO}
 
@@ -396,7 +397,7 @@ def card(slug, name, creds, title, email):
     <div class="cr">%(creds)s</div>
     <div class="ti">%(title)s</div>
     <div class="contact">
-      <div><b>(334) 319-1684</b>Fax (334) 625-6578</div>
+      <div><b>(334) 600-2362</b>Toll free (888) 343-5314<br>Fax (334) 625-6578</div>
       <div class="r">%(email)s<br>correctiverehab.com<br>17257 Highway 49 S, Notasulga, AL 36866</div>
     </div>
   </div>
@@ -406,7 +407,7 @@ def card(slug, name, creds, title, email):
   <img src="data:image/png;base64,%(logow)s" alt="Corrective Bodyworks Rehabilitation and Wellness">
   <div class="tag">Outpatient Orthopedics &nbsp;&middot;&nbsp; Manual Therapy<br>
     Sports Medicine &nbsp;&middot;&nbsp; Dry Needling</div>
-  <div class="det">correctiverehab.com<br>Notasulga, Alabama &nbsp;&middot;&nbsp; (334) 319-1684</div>
+  <div class="det">correctiverehab.com<br>(334) 600-2362 &nbsp;&middot;&nbsp; Toll free (888) 343-5314</div>
 </div>
 """ % {'logo': LOGO, 'logow': LOGO_W, 'name': name, 'creds': creds,
        'title': title, 'email': email}

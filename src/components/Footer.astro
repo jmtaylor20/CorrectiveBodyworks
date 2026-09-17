@@ -19,7 +19,8 @@ const year = new Date().getFullYear();
         </a>
       </address>
       <p class="ftr__contact">
-        <a href={site.phoneHref}>{site.phone}</a>
+        <a href={site.phoneHref}>{site.phone}</a><br />
+        Toll free <a href={site.tollFreeHref}>{site.tollFree}</a>
         {site.email && <><br /><a href={`mailto:${site.email}`}>{site.email}</a></>}
       </p>
     </div>

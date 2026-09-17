@@ -63,8 +63,11 @@ files and rebuilding.
 
 ## Before printing
 
-Fax is **(334) 625-6578**, set on all four pieces. It appears prominently on the
-referral pad, since fax is how most physician offices will actually send one.
+The business phone is **(334) 600-2362** and the toll free line is
+**(888) 343-5314**. Both are set on all four pieces, alongside the fax,
+**(334) 625-6578**. The fax appears prominently on the referral pad, since fax
+is how most physician offices will actually send one. The website reads the
+same numbers from `src/data/site.ts`, so change both places together.
 
 **The business cards carry correctiverehab.com. The referral pad and flyer do
 not.** That domain currently serves an under construction placeholder, so
