@@ -11,9 +11,6 @@
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    # Pre-launch: keep the preview out of every search index.
-    # Remove this line at launch.
-    X-Robots-Tag = "noindex, nofollow"
 
 [[headers]]
   for = "/*.png"

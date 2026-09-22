@@ -1,8 +1,8 @@
 import type { APIRoute } from 'astro';
 
-// Pre-launch: block every crawler. Flip PUBLIC_PRELAUNCH to "false" (or drop
-// the variable) at launch and redeploy to open the site up.
-const prelaunch = import.meta.env.PUBLIC_PRELAUNCH !== 'false';
+// The site is live and open to crawlers. Set PUBLIC_PRELAUNCH to "true" to
+// block them again on a build that should stay out of search results.
+const prelaunch = import.meta.env.PUBLIC_PRELAUNCH === 'true';
 
 export const GET: APIRoute = ({ site }) =>
   new Response(

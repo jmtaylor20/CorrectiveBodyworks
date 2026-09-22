@@ -27,23 +27,22 @@ a page component to make an edit.
 Brand palette is sampled from the logo: navy `#011b3a`, slate `#4c647a`,
 mist `#ced4da`.
 
-## Pre-launch mode
+## Search engine visibility
 
-The site ships **closed to search engines**. While `PUBLIC_PRELAUNCH` is unset
-or anything other than `"false"`:
+The site is live and open to search engines. To hide a build again, set
+`PUBLIC_PRELAUNCH="true"` at build time. While it is set:
 
 - every page renders `<meta name="robots" content="noindex, nofollow, …">`
 - `/robots.txt` serves `Disallow: /`
-- `netlify.toml` sends an `X-Robots-Tag: noindex, nofollow` header
 
-### Going live
+Leave it unset for production builds.
 
-1. Set `PUBLIC_PRELAUNCH=false` in the Netlify environment variables.
-2. Delete the `X-Robots-Tag` line from `netlify.toml`.
-3. Remove the site's password protection in Netlify
-   (**Site settings → Access & security → Visitor access**).
-4. Point `site:` in `astro.config.mjs` at the real production domain.
-5. Redeploy, then submit the sitemap in Google Search Console.
+## Deploying
+
+The Netlify project is not connected to GitHub. It deploys by uploading a
+build, so a deploy is: `npm run build`, then push `dist/` to the project with
+the Netlify CLI or the Netlify MCP deploy tool. The project is
+`corrective-bodyworks-preview` on Netlify and serves correctiverehab.com.
 
 ## Still to do before launch
 

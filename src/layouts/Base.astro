@@ -25,9 +25,9 @@ const pageTitle = !title
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 
-// Pre-launch guard: keep the site out of search results until launch day.
-// Set PUBLIC_PRELAUNCH="false" in the host's env vars to go live.
-const prelaunch = import.meta.env.PUBLIC_PRELAUNCH !== 'false';
+// The site is live. Set PUBLIC_PRELAUNCH="true" to hide a build from
+// search engines again, for example on a staging deploy.
+const prelaunch = import.meta.env.PUBLIC_PRELAUNCH === 'true';
 
 const localBusiness = {
   '@context': 'https://schema.org',
