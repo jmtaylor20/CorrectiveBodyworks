@@ -43,6 +43,8 @@ The Netlify project is not connected to GitHub. It deploys by uploading a
 build, so a deploy is: `npm run build`, then push `dist/` to the project with
 the Netlify CLI or the Netlify MCP deploy tool. The project is
 `corrective-bodyworks-preview` on Netlify and serves correctiverehab.com.
+gocorrective.com is an alias on the same project; `netlify.toml` redirects it
+to correctiverehab.com with a 301 so there is one canonical domain.
 
 ## Still to do before launch
 
