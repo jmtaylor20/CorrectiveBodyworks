@@ -103,7 +103,7 @@ h1{font-family:var(--display);font-size:17pt;font-weight:600;letter-spacing:.03e
 pad_body = """
 <div class="head">
   <img class="logo" src="data:image/png;base64,%(logo)s" alt="Corrective Bodyworks Rehabilitation and Wellness">
-  <div class="npi"><b>Group NPI</b>1356299622<br>Notasulga, Alabama</div>
+  <div class="npi"><b>Group NPI</b>1356299622<br>Reeltown, Alabama</div>
 </div>
 
 <h1>Physical Therapy Referral</h1>
@@ -228,7 +228,7 @@ body{width:8.5in;height:11in;padding:.42in .5in .34in;display:flex;flex-directio
 h1{font-family:var(--display);font-size:38pt;font-weight:600;line-height:.95;
   letter-spacing:.015em;text-transform:uppercase;color:var(--navy);margin:.18in 0 .09in;}
 h1 em{font-style:normal;color:var(--slate);}
-.lede{font-size:11pt;line-height:1.5;color:var(--muted);max-width:6.1in;}
+.lede{font-size:11pt;line-height:1.5;color:var(--muted);max-width:6.9in;}
 .split{display:flex;gap:.42in;margin-top:.24in;}
 .col{flex:1;}
 h2{font-family:var(--display);font-size:13.5pt;font-weight:600;letter-spacing:.05em;
@@ -276,9 +276,10 @@ flyer_body = """
 
 <h1>Outpatient orthopedic PT,<br><em>one patient at a time.</em></h1>
 <p class="lede">
-  A new outpatient clinic in Notasulga built around unhurried, hands-on care.
-  Four treatment rooms and a deliberately manageable caseload, so your patient
-  is seen promptly and treated by the same clinician at every visit.
+  A new outpatient clinic, centrally located in Reeltown and serving patients
+  across the Tallassee, Notasulga, Dadeville and Lake Martin areas. Built around
+  unhurried, hands-on care, with four treatment rooms and a manageable caseload,
+  so your patient is seen promptly and treated by the same clinician at every visit.
 </p>
 
 <div class="split">
