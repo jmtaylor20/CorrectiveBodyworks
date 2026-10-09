@@ -52,6 +52,23 @@ mark sits quietly in the right third. White text placed anywhere on the image
 measures at worst 10.9:1 contrast, comfortably past the 4.5:1 accessibility
 threshold. The design rationale is in `DESIGN-PHILOSOPHY.md`.
 
+### Light background, for the navy logo
+
+The navy landing background is built for the white logo. Once the clinic logo
+is the navy outlined version (see the logo upload section below), use the
+light set instead, which is the same contour design on the brand off white:
+
+| File | Size | Use it for |
+| --- | --- | --- |
+| `bg-light-1920x1080.jpg` | 58 KB | **Recommended.** Desktop landing and registration. |
+| `bg-light-2560x1440.jpg` | 93 KB | Very large displays only. |
+| `bg-light-mobile-1170x2050.jpg` | 65 KB | Portrait crop for a separate mobile background. |
+| `*.webp` | 12 to 18 KB | Same three in WebP, if the upload accepts it. |
+
+Navy text anywhere on the light image measures at least 10:1 contrast. The
+centre and upper half are kept calm so the logo and the sign-in card have
+somewhere to land, and the mark sits faint in the lower right.
+
 ## Colors
 
 | Role | Hex | Notes |
