@@ -94,3 +94,18 @@ The website and the portal should feel like one place. The site uses the same
 navy and slate, the same logo, and the same voice. If the brand changes, update
 both: `src/data/site.ts` and `src/styles/global.css` on the site, and the portal
 settings in PT Everywhere.
+
+## Clinic logo upload
+
+PT Everywhere has one logo slot. It renders white-on-navy in the app header
+and black-on-white on printed documents and PDFs, so a plain white logo
+vanishes on paper and a plain navy logo vanishes in the header.
+
+`logo-horizontal-outlined.png` in this folder is the navy horizontal lockup
+with a thin white outline. On the navy header the outline carries the shape;
+on a white page the outline disappears into the paper and the navy reads
+normally. Upload it under Clinic Settings, General Information, Logo.
+
+The alternative is to change the Header Color on the same page to a light
+color, which lets the plain navy `public/logo-horizontal.png` work in both
+places. Either works; the outlined file keeps the navy header.
