@@ -36,10 +36,14 @@ export const site = {
     'https://maps.apple.com/?daddr=17257+Highway+49+S,+Notasulga,+AL+36866',
 
   hours: [
-    { day: 'Monday and Wednesday', time: '7:30 AM to 4:30 PM' },
-    { day: 'Tuesday and Thursday', time: '9:00 AM to 6:00 PM' },
-    { day: 'Friday', time: '7:30 AM to 12:00 PM' },
+    { day: 'Monday through Friday', time: '8:00 AM to 5:00 PM' },
     { day: 'Saturday and Sunday', time: 'Closed' },
+  ],
+
+  // Same hours in the form Google reads. Keep in step with `hours` above
+  // and with the Google Business Profile.
+  openingHours: [
+    { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '08:00', closes: '17:00' },
   ],
 
   // PT Everywhere.

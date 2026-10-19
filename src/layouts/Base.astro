@@ -46,6 +46,12 @@ const localBusiness = {
     addressCountry: 'US',
   },
   medicalSpecialty: 'PhysicalTherapy',
+  openingHoursSpecification: site.openingHours.map((h) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: h.days,
+    opens: h.opens,
+    closes: h.closes,
+  })),
 };
 ---
 
